@@ -33,10 +33,15 @@ size_flags_vertical = 3
 [node name="ScoreContainer" type="VBoxContainer" parent="VBoxContainer/Dice" unique_id=633286551]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 48
 
 [node name="Label" type="Label" parent="VBoxContainer/Dice/ScoreContainer" unique_id=1411856511]
 layout_mode = 2
 text = "Score"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="VBoxContainer/Dice/ScoreContainer" unique_id=1689150048]
+layout_mode = 2
 horizontal_alignment = 1
 
 [node name="Button1" type="Button" parent="VBoxContainer/Dice" unique_id=800800200]
@@ -115,3 +120,4 @@ layout_mode = 2
 text = "Pass"
 
 [connection signal="pressed" from="VBoxContainer/Control/RollButton" to="." method="roll"]
+[connection signal="pressed" from="VBoxContainer/Control/PassButton" to="." method="bank"]
