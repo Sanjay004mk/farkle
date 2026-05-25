@@ -49,42 +49,42 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "1"
+text = "0"
 
 [node name="Button2" type="Button" parent="VBoxContainer/Dice" unique_id=1835168017]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "1"
+text = "0"
 
 [node name="Button3" type="Button" parent="VBoxContainer/Dice" unique_id=1213947248]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "1"
+text = "0"
 
 [node name="Button4" type="Button" parent="VBoxContainer/Dice" unique_id=152906937]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "1"
+text = "0"
 
 [node name="Button5" type="Button" parent="VBoxContainer/Dice" unique_id=1132644429]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "1"
+text = "0"
 
 [node name="Button6" type="Button" parent="VBoxContainer/Dice" unique_id=736854556]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "1"
+text = "0"
 
 [node name="RulesContainer" type="VBoxContainer" parent="VBoxContainer/Dice" unique_id=596045347]
 layout_mode = 2

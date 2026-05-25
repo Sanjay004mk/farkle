@@ -1,13 +1,6 @@
 extends Control
 
-### Behvioral documentation
-# Events:
-#	- Roll: Should roll all unlocked in die if locked die are valid. If all are locked it, keep current score and unlock all
-#	- Pass: Should only be available if currently locked in die are valid. Stores points and reset all die
-#	- Choose die: if selected, unselect else add to the list of die to be used for point calculation
-
-var rng := RandomNumberGenerator.new()
-var dice := [Dice.new(), Dice.new(), Dice.new(),Dice.new(), Dice.new(), Dice.new()]
+var game: FarkleGame = FarkleGame.new()
 @onready var dice_buttons: Array[Button] = [
 	$VBoxContainer/Dice/Button1,
 	$VBoxContainer/Dice/Button2,
@@ -19,33 +12,17 @@ var dice := [Dice.new(), Dice.new(), Dice.new(),Dice.new(), Dice.new(), Dice.new
 @onready var score: Label = $VBoxContainer/Dice/ScoreContainer/Score
 
 func _ready() -> void:
-	roll()
 	for i in range(6):
-		dice_buttons[i].pressed.connect(func(): toggle_lock(i))
+		dice_buttons[i].pressed.connect(func(): toggle_select(i))
 
 func roll() -> void:
-	for i in range(6):
-		dice[i].roll(rng.randi_range(1, 6))
-		dice_buttons[i].text = str(dice[i].number)
+	game.active_player.roll()
+	for i in range(FarkleGame.MAX_DICE):
+		dice_buttons[i].text = str(game.active_player.dice[i].number)
 
-func toggle_lock(i: int) -> void:
-	if dice[i].locked:
-		dice_buttons[i].focus_mode = Control.FOCUS_NONE
-	else:
-		pass # todo highlight
-	dice[i].locked = !dice[i].locked
+func toggle_select(i: int) -> void:
+	game.active_player.toggle_select(i)
 
 func bank() -> void:
-	var values := []
-	for die in dice:
-		if die.locked:
-			values.append(die.number)
-
-	score.text += ", ".join(values) + "\n"
-
-	free_all_die()
+	score.text += str(game.active_player.score()) + "\n"
 	roll()
-
-func free_all_die() -> void:
-	for die in dice:
-		die.locked = false
