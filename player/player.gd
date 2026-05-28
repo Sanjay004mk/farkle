@@ -51,3 +51,7 @@ func score() -> int:
 	used_dice.append_array(selected_dice)
 	selected_dice.clear()
 	return round_score
+
+func release_all_die():
+	selected_dice.clear()
+	used_dice.clear()

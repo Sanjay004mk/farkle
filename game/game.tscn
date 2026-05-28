@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://g45v7skopm7n"]
+
+[ext_resource type="Environment" uid="uid://gys114q4e4c8" path="res://game/game_environment.tres" id="1_l1rk1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l1rk1"]
+
+[node name="game" type="Node3D" unique_id=1679775102]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1496482131]
+environment = ExtResource("1_l1rk1")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=330589788]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1931678, 2.726869)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=96419738]
+mesh = SubResource("BoxMesh_l1rk1")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=856574827]
+transform = Transform3D(0.9999867, -0.0017481829, 0.0048598903, 0.0017842995, 0.9999708, -0.0074371826, -0.004846747, 0.0074457554, 0.99996054, 0, 0, 3.7211237)
