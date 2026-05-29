@@ -2,18 +2,48 @@
 
 [ext_resource type="Environment" uid="uid://gys114q4e4c8" path="res://game/game_environment.tres" id="1_l1rk1"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1rk1"]
+size = Vector3(10, 1, 10)
+
 [sub_resource type="BoxMesh" id="BoxMesh_l1rk1"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l1rk1"]
+bounce = 0.4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vasa2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_h7iqs"]
+
 [node name="game" type="Node3D" unique_id=1679775102]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2089636971]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1496482131]
 environment = ExtResource("1_l1rk1")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=330589788]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1931678, 2.726869)
+transform = Transform3D(1, 0, 0, 0, 0.27075168, 0.9626492, 0, -0.9626492, 0.27075168, 0, 7.0946784, 2.6899686)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=96419738]
+[node name="BaseCollisionStatic" type="StaticBody3D" parent="." unique_id=2136100846]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaseCollisionStatic" unique_id=707034010]
+shape = SubResource("BoxShape3D_l1rk1")
+
+[node name="Base" type="MeshInstance3D" parent="BaseCollisionStatic/CollisionShape3D" unique_id=96419738]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("BoxMesh_l1rk1")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=856574827]
-transform = Transform3D(0.9999867, -0.0017481829, 0.0048598903, 0.0017842995, 0.9999708, -0.0074371826, -0.004846747, 0.0074457554, 0.99996054, 0, 0, 3.7211237)
+[node name="Die" type="RigidBody3D" parent="." unique_id=1997742331]
+transform = Transform3D(0.79896045, -0.58683485, -0.13147986, -0.07534635, -0.31458485, 0.94623464, -0.59664476, -0.7460973, -0.29555684, 1.9100187, 4.9032483, -6.007466)
+physics_material_override = SubResource("PhysicsMaterial_l1rk1")
+gravity_scale = 3.0
+linear_velocity = Vector3(-2, -5, 7)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Die" unique_id=921353885]
+shape = SubResource("BoxShape3D_vasa2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Die/CollisionShape3D" unique_id=1212762017]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_h7iqs")

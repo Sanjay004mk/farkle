@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b21xwmel285do"]
+
+[ext_resource type="Script" uid="uid://c06cvopkp3so6" path="res://dice/animated_die.gd" id="1_hhyba"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_skg3h"]
+
+[node name="AnimatedDie" type="Node3D" unique_id=1976535065]
+script = ExtResource("1_hhyba")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1333775108]
+mesh = SubResource("BoxMesh_skg3h")
