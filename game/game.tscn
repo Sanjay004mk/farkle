@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://g45v7skopm7n"]
 
 [ext_resource type="Environment" uid="uid://gys114q4e4c8" path="res://game/game_environment.tres" id="1_l1rk1"]
+[ext_resource type="PackedScene" uid="uid://b21xwmel285do" path="res://dice/animated_die.tscn" id="2_vasa2"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_l1rk1"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_h7iqs"]
 size = Vector3(10, 1, 10)
 
 [sub_resource type="BoxMesh" id="BoxMesh_l1rk1"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l1rk1"]
-bounce = 0.4
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1rk1"]
+size = Vector3(1, 10, 10)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vasa2"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_h7iqs"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_4fuuu"]
+size = Vector3(10, 3, 1)
 
 [node name="game" type="Node3D" unique_id=1679775102]
 
@@ -29,21 +29,27 @@ transform = Transform3D(1, 0, 0, 0, 0.27075168, 0.9626492, 0, -0.9626492, 0.2707
 [node name="BaseCollisionStatic" type="StaticBody3D" parent="." unique_id=2136100846]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BaseCollisionStatic" unique_id=707034010]
-shape = SubResource("BoxShape3D_l1rk1")
+shape = SubResource("BoxShape3D_h7iqs")
 
 [node name="Base" type="MeshInstance3D" parent="BaseCollisionStatic/CollisionShape3D" unique_id=96419738]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("BoxMesh_l1rk1")
 
-[node name="Die" type="RigidBody3D" parent="." unique_id=1997742331]
-transform = Transform3D(0.79896045, -0.58683485, -0.13147986, -0.07534635, -0.31458485, 0.94623464, -0.59664476, -0.7460973, -0.29555684, 1.9100187, 4.9032483, -6.007466)
-physics_material_override = SubResource("PhysicsMaterial_l1rk1")
-gravity_scale = 3.0
-linear_velocity = Vector3(-2, -5, 7)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="BaseCollisionStatic" unique_id=447669414]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, 0)
+shape = SubResource("BoxShape3D_l1rk1")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Die" unique_id=921353885]
-shape = SubResource("BoxShape3D_vasa2")
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="BaseCollisionStatic" unique_id=139416338]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 1, 0)
+shape = SubResource("BoxShape3D_l1rk1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Die/CollisionShape3D" unique_id=1212762017]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_h7iqs")
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="BaseCollisionStatic" unique_id=1755429126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.5)
+shape = SubResource("BoxShape3D_4fuuu")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="BaseCollisionStatic" unique_id=924616776]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5.5)
+shape = SubResource("BoxShape3D_4fuuu")
+
+[node name="AnimatedDie" parent="." unique_id=1976535065 instance=ExtResource("2_vasa2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2562685, 1.8379817, -3.202293)
