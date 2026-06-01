@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://g45v7skopm7n"]
+
+[ext_resource type="Environment" uid="uid://gys114q4e4c8" path="res://game/game_environment.tres" id="1_l1rk1"]
+[ext_resource type="PackedScene" uid="uid://b21xwmel285do" path="res://dice/animated_die.tscn" id="2_vasa2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l1rk1"]
+
+[node name="game" type="Node3D" unique_id=1679775102]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2089636971]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1901055363]
+transform = Transform3D(0.56880605, -0.71228147, 0.41123578, 2.7805946e-08, 0.49999994, 0.86602545, -0.82247174, -0.49260047, 0.28440297, 0, 0, 0)
+light_energy = 0.5
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1496482131]
+environment = ExtResource("1_l1rk1")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=330589788]
+transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 7, 2.5)
+
+[node name="Base" type="MeshInstance3D" parent="." unique_id=96419738]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_l1rk1")
+
+[node name="AnimatedDie1" parent="." unique_id=1976535065 instance=ExtResource("2_vasa2")]
+transform = Transform3D(-5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, -5.9604645e-08, -0.39706373, 0.5, 2.0220761)
+
+[node name="AnimatedDie2" parent="." unique_id=559807175 instance=ExtResource("2_vasa2")]
+transform = Transform3D(-5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, -5.9604645e-08, 0.96609735, 0.5, 0.063008785)
+
+[node name="AnimatedDie3" parent="." unique_id=1005562638 instance=ExtResource("2_vasa2")]
+transform = Transform3D(-5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, -5.9604645e-08, 2.5054502, 0.5, 0.8347206)
+
+[node name="AnimatedDie4" parent="." unique_id=607050558 instance=ExtResource("2_vasa2")]
+transform = Transform3D(-5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, -5.9604645e-08, -2.0474758, 0.5, 0.8347206)
+
+[node name="AnimatedDie5" parent="." unique_id=1755423575 instance=ExtResource("2_vasa2")]
+transform = Transform3D(-5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, -5.9604645e-08, -2.0474758, 0.5, -1.778398)
+
+[node name="AnimatedDie6" parent="." unique_id=446228418 instance=ExtResource("2_vasa2")]
+transform = Transform3D(-5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, -5.9604645e-08, 2.1983805, 0.5, -1.6653605)

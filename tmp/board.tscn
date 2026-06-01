@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://ewa5qijtcjqo"]
+
+[ext_resource type="Script" uid="uid://bg3jtktjppcky" path="res://tmp/board.gd" id="1_47370"]
+
+[node name="Board" type="Control" unique_id=995536116]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_47370")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2068478441]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1907287186]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Farkle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dice" type="HBoxContainer" parent="VBoxContainer" unique_id=973608788]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScoreContainer" type="VBoxContainer" parent="VBoxContainer/Dice" unique_id=633286551]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 48
+
+[node name="Label" type="Label" parent="VBoxContainer/Dice/ScoreContainer" unique_id=1411856511]
+layout_mode = 2
+text = "Score"
+horizontal_alignment = 1
+
+[node name="PlayerScores" type="HBoxContainer" parent="VBoxContainer/Dice/ScoreContainer" unique_id=399090283]
+layout_mode = 2
+
+[node name="Score1" type="Label" parent="VBoxContainer/Dice/ScoreContainer/PlayerScores" unique_id=1689150048]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="Score2" type="Label" parent="VBoxContainer/Dice/ScoreContainer/PlayerScores" unique_id=1127570528]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="Button1" type="Button" parent="VBoxContainer/Dice" unique_id=800800200]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "0"
+
+[node name="Button2" type="Button" parent="VBoxContainer/Dice" unique_id=1835168017]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "0"
+
+[node name="Button3" type="Button" parent="VBoxContainer/Dice" unique_id=1213947248]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "0"
+
+[node name="Button4" type="Button" parent="VBoxContainer/Dice" unique_id=152906937]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "0"
+
+[node name="Button5" type="Button" parent="VBoxContainer/Dice" unique_id=1132644429]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "0"
+
+[node name="Button6" type="Button" parent="VBoxContainer/Dice" unique_id=736854556]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "0"
+
+[node name="RulesContainer" type="VBoxContainer" parent="VBoxContainer/Dice" unique_id=596045347]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 48
+
+[node name="Label" type="Label" parent="VBoxContainer/Dice/RulesContainer" unique_id=704692868]
+layout_mode = 2
+text = "Rules"
+horizontal_alignment = 1
+
+[node name="Rules" type="Label" parent="VBoxContainer/Dice/RulesContainer" unique_id=1167799408]
+layout_mode = 2
+text = "1 - 100
+5 - 50
+3 of a kind - 100 X number 
+3 of 1's - 1000
+additional after 3 - double previous value
+5 continuous numbers - 500
+6 continuous numbers - 1200"
+horizontal_alignment = 1
+
+[node name="Control" type="HBoxContainer" parent="VBoxContainer" unique_id=969933003]
+layout_mode = 2
+alignment = 1
+
+[node name="RollButton" type="Button" parent="VBoxContainer/Control" unique_id=1343706103]
+layout_mode = 2
+text = "Roll"
+
+[node name="PassButton" type="Button" parent="VBoxContainer/Control" unique_id=1179317393]
+layout_mode = 2
+text = "Pass"
+
+[connection signal="pressed" from="VBoxContainer/Control/RollButton" to="." method="roll"]
+[connection signal="pressed" from="VBoxContainer/Control/PassButton" to="." method="bank"]

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b21xwmel285do"]
+
+[ext_resource type="Script" uid="uid://c06cvopkp3so6" path="res://dice/animated_die.gd" id="1_hhyba"]
+[ext_resource type="Curve3D" uid="uid://cc5vlva0p6r0e" path="res://dice/animations/die_roll_1.tres" id="2_7vs8r"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_skg3h"]
+
+[node name="AnimatedDie" type="Node3D" unique_id=1976535065]
+script = ExtResource("1_hhyba")
+
+[node name="Path3D" type="Path3D" parent="." unique_id=1583794014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 0)
+curve = ExtResource("2_7vs8r")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=472989146]
+transform = Transform3D(-4.4791754e-08, -0.14353178, 0.98961943, 7.4505384e-09, 0.9896137, 0.14353262, -0.9999944, 1.3802273e-08, -4.325764e-08, 3.0822873, 2.9988322, 0)
+
+[node name="Node3D" type="Node3D" parent="Path3D/PathFollow3D" unique_id=104775180]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/PathFollow3D/Node3D" unique_id=1333775108]
+mesh = SubResource("BoxMesh_skg3h")
