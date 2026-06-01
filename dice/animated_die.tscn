@@ -9,10 +9,11 @@
 script = ExtResource("1_hhyba")
 
 [node name="Path3D" type="Path3D" parent="." unique_id=1583794014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 0)
 curve = ExtResource("2_7vs8r")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=472989146]
-transform = Transform3D(-0.5671423, 0.32684648, 0.7559808, 0, 0.91787285, -0.39684486, -0.82361305, -0.2250674, -0.5205705, 0.44200385, 0.4512729, -1.0130816)
+transform = Transform3D(-4.4791754e-08, -0.14353178, 0.98961943, 7.4505384e-09, 0.9896137, 0.14353262, -0.9999944, 1.3802273e-08, -4.325764e-08, 3.0822873, 2.9988322, 0)
 
 [node name="Node3D" type="Node3D" parent="Path3D/PathFollow3D" unique_id=104775180]
 
