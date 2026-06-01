@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c06cvopkp3so6" path="res://dice/animated_die.gd" id="1_hhyba"]
 [ext_resource type="Curve3D" uid="uid://cc5vlva0p6r0e" path="res://dice/animations/die_roll_1.tres" id="2_7vs8r"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_skg3h"]
+[ext_resource type="BoxMesh" uid="uid://dbm8shogmj2n2" path="res://dice/model/die_mesh.tres" id="3_nlslu"]
 
 [node name="AnimatedDie" type="Node3D" unique_id=1976535065]
 script = ExtResource("1_hhyba")
@@ -18,4 +17,4 @@ transform = Transform3D(-4.4791754e-08, -0.14353178, 0.98961943, 7.4505384e-09, 
 [node name="Node3D" type="Node3D" parent="Path3D/PathFollow3D" unique_id=104775180]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/PathFollow3D/Node3D" unique_id=1333775108]
-mesh = SubResource("BoxMesh_skg3h")
+mesh = ExtResource("3_nlslu")

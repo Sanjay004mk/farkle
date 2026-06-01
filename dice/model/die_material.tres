@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b6nouqmb7w08c"]
+
+[ext_resource type="Texture2D" uid="uid://d4dmc10jc6qg0" path="res://dice/model/die_map.png" id="1_0ikc3"]
+
+[resource]
+albedo_texture = ExtResource("1_0ikc3")
