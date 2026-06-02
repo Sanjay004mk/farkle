@@ -14,6 +14,12 @@ func _init() -> void:
 	for i in range(FarkleGame.MAX_DICE):
 		dice.append(Die.new())
 
+func assign_die(p_die: Die, p_index: int):
+	if p_die and (p_index >= 0 and p_index < 6):
+		dice[p_index] = p_die
+	else:
+		printerr("Invalid Die or index. Unable to assign die to player.")
+
 ## Return value: 
 ##	-1 => selected die is locked
 ##	0 => die is selected

@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://g45v7skopm7n"]
 
+[ext_resource type="Script" uid="uid://b8n27bckhdxo" path="res://game/game.gd" id="1_h7iqs"]
 [ext_resource type="Environment" uid="uid://gys114q4e4c8" path="res://game/game_environment.tres" id="1_l1rk1"]
 [ext_resource type="PackedScene" uid="uid://b21xwmel285do" path="res://dice/animated_die.tscn" id="2_vasa2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_l1rk1"]
 
 [node name="game" type="Node3D" unique_id=1679775102]
+script = ExtResource("1_h7iqs")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2089636971]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -42,3 +44,28 @@ transform = Transform3D(-5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, -5.9604645e-08, -2
 
 [node name="AnimatedDie6" parent="." unique_id=446228418 instance=ExtResource("2_vasa2")]
 transform = Transform3D(-5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, -5.9604645e-08, 2.1983805, 0.5, -1.6653605)
+
+[node name="Control" type="Control" parent="." unique_id=1971385254]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Button" type="Button" parent="Control" unique_id=1495823261]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.5
+offset_top = -31.0
+offset_right = 18.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "Roll"
+
+[connection signal="pressed" from="Control/Button" to="." method="on_roll_pressed"]
