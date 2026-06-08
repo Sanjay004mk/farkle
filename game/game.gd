@@ -1,20 +1,73 @@
 extends FarkleGame
 
-@onready var dice: Array[AnimatedDie] = [$AnimatedDie1, $AnimatedDie2, $AnimatedDie3, $AnimatedDie4, $AnimatedDie5, $AnimatedDie6]
+@onready var turn_label: Label = $Control/VBoxContainer/TurnLabel
+@onready var player_1_score: Label = $Control/VBoxContainer/Player1Score
+@onready var player_2_score: Label = $Control/VBoxContainer/Player2Score
+@onready var die_spawn_points: Array[Node3D] = [$DieSpawnPoints/DieSpawnPoint1, $DieSpawnPoints/DieSpawnPoint2, $DieSpawnPoints/DieSpawnPoint3, $DieSpawnPoints/DieSpawnPoint4, $DieSpawnPoints/DieSpawnPoint5, $DieSpawnPoints/DieSpawnPoint6]
+const ANIMATED_DIE = preload("uid://b21xwmel285do")
 
 func _ready() -> void:
-	for i in range(dice.size()):
-		active_player.assign_die(dice[i], i)
-		dice[i].set_on_die_clicked_callback(func(): toggle_select(i))
+	for player in players:
+		for i in range(FarkleGame.MAX_DICE):
+			var spawn_point = die_spawn_points[i]
+			var die: AnimatedDie = ANIMATED_DIE.instantiate()
+			add_child(die)
+			die.position = spawn_point.position
+			player.assign_die(die, i)
+			die.set_on_die_clicked_callback(func(): toggle_select(player, i))
 
-func on_roll_pressed():
+
+	player_switched.connect(func(): turn_label.text = "Player %d's turn" % [active_player_index + 1])
+	players[0].points_updated.connect(func(total): player_1_score.text = "Player 1's Score: %d" % [total])
+	players[1].points_updated.connect(func(total): player_2_score.text = "Player 2's Score: %d" % [total])
+
+	_hide_other_player_die()
 	active_player.roll()
+	_check_valid_turn()
 
-func toggle_select(p_index: int):
-	var ret = active_player.toggle_select(p_index)
+func _check_valid_turn():
+	while not FarkleRules.has_valid_selection(active_player.unused_dice):
+		switch_player()
+
+# TODO: UI animations
+
+func player_roll() -> bool:
+	var ret := super()
+	if ret:
+		_check_valid_turn()
+
+	return ret
+
+func progress_turn() -> bool:
+	var ret := super()
+	if ret:
+		_check_valid_turn()
+
+	return ret
+
+func _hide_other_player_die():
+	for die in active_player.dice:
+		die.show()
+
+	for die in other_player.dice:
+		die.hide()
+
+func switch_player() -> void:
+	super()
+	for die in other_player.dice:
+		if die is AnimatedDie:
+			die.toggle_select(false)
+	_hide_other_player_die()
+
+func toggle_select(p_player: Player, p_index: int):
+	var ret = p_player.toggle_select(p_index)
+	var die: AnimatedDie = p_player.dice[p_index]
+	if not die:
+		return
+
 	if ret == 0:
-		dice[p_index].toggle_select(true)
+		die.toggle_select(true)
 	elif ret == 1:
-		dice[p_index].toggle_select(false)
+		die.toggle_select(false)
 	else:
-		print("Die is locked. ", dice[p_index], " Value: ", dice[p_index].number)
+		print("Die is locked. ", die, " Value: ", die.number)
