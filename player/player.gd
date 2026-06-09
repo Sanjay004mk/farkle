@@ -92,3 +92,4 @@ func score() -> int:
 func release_all_die():
 	selected_dice.clear()
 	used_dice.clear()
+	round_points.clear()
