@@ -9,7 +9,19 @@ var unused_dice: Array[Die]:
 	get:
 		return dice.filter(func(die): return not used_dice.has(die))
 
+var round_points: Array[int] = []
 var total_points: int = 0
+
+var current_score: int:
+	get:
+		return FarkleRules.score_selection(selected_dice)
+
+var banked_score: int:
+	get:
+		var ret: int = 0
+		for points in round_points:
+			ret += points
+		return ret
 
 var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
@@ -40,25 +52,37 @@ func toggle_select(p_index: int) -> int:
 	selected_dice.append(dice[p_index])
 	return 0
 
-# TODO: Fix storing points per roll and adding them at the end when 'score' is called.
-# Right now, points are calculated at the end leading to T1: 5 | T2: 5, 5, 5 being counted as 1000 instead of 550
 func roll() -> bool:
-	if used_dice.size() == FarkleGame.MAX_DICE:
+	var round_score = FarkleRules.score_selection(selected_dice)
+
+	round_points.append(round_score)
+	used_dice.append_array(selected_dice)
+	selected_dice.clear()
+
+	if (used_dice.size() + selected_dice.size()) == FarkleGame.MAX_DICE:
+		for die in used_dice:
+			die.toggle_select(false)
+
 		used_dice.clear()
 
 	for die in dice:
 		if not (used_dice.has(die) or selected_dice.has(die)):
 			die.roll(_rng.randf())
 
+
 	return true
 
 func score() -> int:
-	if selected_dice.is_empty() or not FarkleRules.is_valid_selection(selected_dice):
+	if round_points.is_empty() and (selected_dice.is_empty() or not FarkleRules.is_valid_selection(selected_dice)):
 		return 0
 
 	var round_score = FarkleRules.score_selection(selected_dice)
-	total_points += round_score
-	used_dice.append_array(selected_dice)
+	round_points.append(round_score)
+	for points in round_points:
+		total_points += points
+
+	round_points.clear()
+	used_dice.clear()
 	selected_dice.clear()
 
 	points_updated.emit(total_points)

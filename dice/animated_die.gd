@@ -59,3 +59,4 @@ func toggle_select(p_selected: bool):
 	var final_value = Vector3.UP if p_selected else Vector3.ZERO
 	_selection_tween = create_tween()
 	_selection_tween.tween_property(mesh_instance_3d, "position", final_value, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	super(p_selected)

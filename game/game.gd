@@ -1,6 +1,8 @@
 extends FarkleGame
 
 @onready var turn_label: Label = $Control/VBoxContainer/TurnLabel
+@onready var current_score: Label = $Control/VBoxContainer/CurrentScore
+@onready var banked_score: Label = $Control/VBoxContainer/BankedScore
 @onready var player_1_score: Label = $Control/VBoxContainer/Player1Score
 @onready var player_2_score: Label = $Control/VBoxContainer/Player2Score
 @onready var die_spawn_points: Array[Node3D] = [$DieSpawnPoints/DieSpawnPoint1, $DieSpawnPoints/DieSpawnPoint2, $DieSpawnPoints/DieSpawnPoint3, $DieSpawnPoints/DieSpawnPoint4, $DieSpawnPoints/DieSpawnPoint5, $DieSpawnPoints/DieSpawnPoint6]
@@ -12,6 +14,7 @@ func _ready() -> void:
 			var spawn_point = die_spawn_points[i]
 			var die: AnimatedDie = ANIMATED_DIE.instantiate()
 			add_child(die)
+			die.on_selected.connect(func(_selected): update_score())
 			die.position = spawn_point.position
 			player.assign_die(die, i)
 			die.set_on_die_clicked_callback(func(): toggle_select(player, i))
@@ -35,6 +38,7 @@ func player_roll() -> bool:
 	var ret := super()
 	if ret:
 		_check_valid_turn()
+		update_score()
 
 	return ret
 
@@ -58,6 +62,11 @@ func switch_player() -> void:
 		if die is AnimatedDie:
 			die.toggle_select(false)
 	_hide_other_player_die()
+	update_score()
+
+func update_score():
+	current_score.text = "Current Score: %d" % [active_player.current_score]
+	banked_score.text = "Banked Score: %d" % [active_player.banked_score]
 
 func toggle_select(p_player: Player, p_index: int):
 	var ret = p_player.toggle_select(p_index)
