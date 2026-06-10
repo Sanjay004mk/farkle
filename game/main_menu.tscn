@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://b0pk73ui16cec" path="res://game/main_menu.gd" id="1_2gctw"]
 [ext_resource type="Material" uid="uid://dps6bi60poop1" path="res://shaders/ui_background_material.tres" id="2_20tr2"]
 [ext_resource type="Material" uid="uid://b3h6hxycksc6q" path="res://shaders/ui_blur_background.tres" id="3_2ed8k"]
+[ext_resource type="FontFile" uid="uid://byojuqq5fvxan" path="res://font/digitalts/DigitaltS-Orange.ttf" id="4_wo36y"]
+[ext_resource type="FontFile" uid="uid://b8scg2t2mwabx" path="res://font/Kwokwi.otf" id="5_t606k"]
 
 [node name="MainMenu" type="Control" unique_id=863194786]
 layout_mode = 3
@@ -42,7 +44,8 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="VBoxContainer" unique_id=604937919]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 48
+theme_override_fonts/font = ExtResource("4_wo36y")
+theme_override_font_sizes/font_size = 96
 text = "FARKLE"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -57,12 +60,16 @@ alignment = 1
 [node name="StartButton" type="Button" parent="VBoxContainer/NavigationButtons" unique_id=327920420]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Start Game"
+theme_override_fonts/font = ExtResource("5_t606k")
+theme_override_font_sizes/font_size = 48
+text = "Play"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer/NavigationButtons" unique_id=1247415047]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Quit"
+theme_override_fonts/font = ExtResource("5_t606k")
+theme_override_font_sizes/font_size = 48
+text = "Exit"
 
 [connection signal="pressed" from="VBoxContainer/NavigationButtons/StartButton" to="." method="on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/NavigationButtons/QuitButton" to="." method="on_quit_pressed"]
