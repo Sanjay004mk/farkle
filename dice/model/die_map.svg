@@ -10,7 +10,7 @@
    inkscape:export-filename="die_map.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
-   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   inkscape:version="1.4.2 (ebf0e94, 2025-05-08)"
    sodipodi:docname="die_map.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -26,13 +26,13 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="1.345188"
-     inkscape:cx="505.13385"
-     inkscape:cy="284.34687"
+     inkscape:zoom="0.95119156"
+     inkscape:cx="56.770899"
+     inkscape:cy="603.97929"
      inkscape:window-width="1920"
-     inkscape:window-height="963"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
@@ -348,6 +348,223 @@
          d="M 222.58721,32.405627 V 72.669269"
          id="path31"
          transform="translate(-58.125175)" />
+    </g>
+    <g
+       id="g67"
+       inkscape:export-filename="die_face_1.png"
+       inkscape:export-xdpi="54.186668"
+       inkscape:export-ydpi="54.186668">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.36165;stroke-dasharray:none"
+         id="rect1"
+         width="27.63835"
+         height="27.63835"
+         x="1.1808252"
+         y="151.18083"
+         ry="6.7353959" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="path1"
+         cx="15"
+         cy="165"
+         r="2.5" />
+    </g>
+    <g
+       id="g68"
+       inkscape:export-filename="die_face_2.png"
+       inkscape:export-xdpi="54.186668"
+       inkscape:export-ydpi="54.186668">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.36165;stroke-dasharray:none"
+         id="rect3"
+         width="27.63835"
+         height="27.63835"
+         x="41.180824"
+         y="151.18083"
+         ry="6.7353959" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle7"
+         cx="47.5"
+         cy="172.5"
+         r="2.5" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle8"
+         cx="62.5"
+         cy="157.5"
+         r="2.5" />
+    </g>
+    <g
+       id="g69"
+       inkscape:export-filename="die_face_3.png"
+       inkscape:export-xdpi="54.186668"
+       inkscape:export-ydpi="54.186668">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.36165;stroke-dasharray:none"
+         id="rect4"
+         width="27.63835"
+         height="27.63835"
+         x="81.180824"
+         y="151.18083"
+         ry="6.7353959" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle29"
+         cx="87.5"
+         cy="172.5"
+         r="2.5" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle30"
+         cx="102.5"
+         cy="157.5"
+         r="2.5" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle52"
+         cx="95"
+         cy="165"
+         r="2.5" />
+    </g>
+    <g
+       id="g70"
+       inkscape:export-filename="die_face_4.png"
+       inkscape:export-xdpi="54.186668"
+       inkscape:export-ydpi="54.186668">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.36165;stroke-dasharray:none"
+         id="rect5"
+         width="27.63835"
+         height="27.63835"
+         x="1.1808252"
+         y="201.18083"
+         ry="6.7353959" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle57"
+         cx="7.5"
+         cy="222.5"
+         r="2.5" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle58"
+         cx="22.5"
+         cy="207.5"
+         r="2.5" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle59"
+         cx="207.5"
+         cy="-7.5"
+         r="2.5"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle60"
+         cx="222.5"
+         cy="-22.5"
+         r="2.5"
+         transform="rotate(90)" />
+    </g>
+    <g
+       id="g71"
+       inkscape:export-filename="die_face_5.png"
+       inkscape:export-xdpi="54.186668"
+       inkscape:export-ydpi="54.186668">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.36165;stroke-dasharray:none"
+         id="rect6"
+         width="27.63835"
+         height="27.63835"
+         x="41.180824"
+         y="201.18083"
+         ry="6.7353959" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle53"
+         cx="47.5"
+         cy="222.5"
+         r="2.5" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle54"
+         cx="62.5"
+         cy="207.5"
+         r="2.5" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle55"
+         cx="207.5"
+         cy="-47.5"
+         r="2.5"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle56"
+         cx="222.5"
+         cy="-62.5"
+         r="2.5"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle65"
+         cx="55"
+         cy="215"
+         r="2.5" />
+    </g>
+    <g
+       id="g72"
+       inkscape:export-filename="die_face_6.png"
+       inkscape:export-xdpi="54.186668"
+       inkscape:export-ydpi="54.186668">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.36165;stroke-dasharray:none"
+         id="rect7"
+         width="27.63835"
+         height="27.63835"
+         x="81.180824"
+         y="201.18083"
+         ry="6.7353959" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle61"
+         cx="87.5"
+         cy="222.5"
+         r="2.5" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle62"
+         cx="102.5"
+         cy="207.5"
+         r="2.5" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle63"
+         cx="207.5"
+         cy="-87.5"
+         r="2.5"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle64"
+         cx="222.5"
+         cy="-102.5"
+         r="2.5"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle66"
+         cx="102.5"
+         cy="215"
+         r="2.5" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.61575;stroke-dasharray:none"
+         id="circle67"
+         cx="215"
+         cy="-87.5"
+         r="2.5"
+         transform="rotate(90)" />
     </g>
   </g>
 </svg>
