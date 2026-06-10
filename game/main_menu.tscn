@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b0pk73ui16cec" path="res://game/main_menu.gd" id="1_2gctw"]
 [ext_resource type="Material" uid="uid://dps6bi60poop1" path="res://shaders/ui_background_material.tres" id="2_20tr2"]
+[ext_resource type="Material" uid="uid://b3h6hxycksc6q" path="res://shaders/ui_blur_background.tres" id="3_2ed8k"]
 
 [node name="MainMenu" type="Control" unique_id=863194786]
 layout_mode = 3
@@ -14,6 +15,15 @@ script = ExtResource("1_2gctw")
 
 [node name="Background" type="ColorRect" parent="." unique_id=121838912]
 material = ExtResource("2_20tr2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Blur" type="ColorRect" parent="." unique_id=1045550082]
+material = ExtResource("3_2ed8k")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

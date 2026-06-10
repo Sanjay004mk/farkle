@@ -10,7 +10,6 @@ uniform sampler2D die_face_6 : source_color, filter_linear, repeat_disable;
 uniform float pace : hint_range(-256.0, 256.0, 0.1) = 10.0;
 uniform float gap : hint_range(0.0, 256.0, 0.1) = 112.0;
 uniform float size : hint_range(4.0, 512.0, 0.1) = 32.0;
-uniform float blur : hint_range(0.0, 16.0, 0.1) = 2.0;
 uniform float angle : hint_range(-180.0, 180.0, 0.1) = -20.0;
 uniform vec4 background : source_color = vec4(0.5, 0.6, 0.2, 1.0);
 
@@ -55,31 +54,8 @@ vec4 compose_background(vec2 screen_pos) {
 	return mix(background, face_color, face_color.a);
 }
 
-// TODO: Fix blur sampling to be done in the next pass
-
-vec4 blur_sample(vec2 screen_pos) {
-	if (blur <= 0.0) {
-		return compose_background(screen_pos);
-	}
-
-	float radius = blur;
-	vec2 offset_x = vec2(radius, 0.0);
-	vec2 offset_y = vec2(0.0, radius);
-
-	vec4 color = compose_background(screen_pos) * 4.0;
-	color += compose_background(screen_pos - offset_x) * 2.0;
-	color += compose_background(screen_pos + offset_x) * 2.0;
-	color += compose_background(screen_pos - offset_y) * 2.0;
-	color += compose_background(screen_pos + offset_y) * 2.0;
-	color += compose_background(screen_pos - offset_x - offset_y);
-	color += compose_background(screen_pos - offset_x + offset_y);
-	color += compose_background(screen_pos + offset_x - offset_y);
-	color += compose_background(screen_pos + offset_x + offset_y);
-	return color / 16.0;	
-}
-
 void fragment() {
 	vec2 viewport_size = 1.0 / SCREEN_PIXEL_SIZE;
 	vec2 screen_pos = SCREEN_UV * viewport_size;
-	COLOR = blur_sample(screen_pos);
+	COLOR = compose_background(screen_pos);
 }
