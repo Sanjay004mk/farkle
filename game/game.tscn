@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://g45v7skopm7n"]
 
+[ext_resource type="Script" uid="uid://b8n27bckhdxo" path="res://game/game.gd" id="1_h7iqs"]
 [ext_resource type="Environment" uid="uid://gys114q4e4c8" path="res://game/game_environment.tres" id="1_l1rk1"]
-[ext_resource type="PackedScene" uid="uid://b21xwmel285do" path="res://dice/animated_die.tscn" id="2_vasa2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_l1rk1"]
 
 [node name="game" type="Node3D" unique_id=1679775102]
+script = ExtResource("1_h7iqs")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2089636971]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -19,26 +20,106 @@ light_energy = 0.5
 environment = ExtResource("1_l1rk1")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=330589788]
-transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 7, 2.5)
+transform = Transform3D(-4.222196e-08, 1, -2.9802322e-08, 1.1313339e-08, 2.9802322e-08, 1, 1, 4.222196e-08, -1.131334e-08, 0, 7, 0)
 
 [node name="Base" type="MeshInstance3D" parent="." unique_id=96419738]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("BoxMesh_l1rk1")
 
-[node name="AnimatedDie1" parent="." unique_id=1976535065 instance=ExtResource("2_vasa2")]
-transform = Transform3D(-5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, -5.9604645e-08, -0.39706373, 0.5, 2.0220761)
+[node name="Control" type="Control" parent="." unique_id=1971385254]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 
-[node name="AnimatedDie2" parent="." unique_id=559807175 instance=ExtResource("2_vasa2")]
-transform = Transform3D(-5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, -5.9604645e-08, 0.96609735, 0.5, 0.063008785)
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=2082789002]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="AnimatedDie3" parent="." unique_id=1005562638 instance=ExtResource("2_vasa2")]
-transform = Transform3D(-5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, -5.9604645e-08, 2.5054502, 0.5, 0.8347206)
+[node name="Roll" type="Button" parent="Control/HBoxContainer" unique_id=1495823261]
+layout_mode = 2
+text = "Roll"
 
-[node name="AnimatedDie4" parent="." unique_id=607050558 instance=ExtResource("2_vasa2")]
-transform = Transform3D(-5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, -5.9604645e-08, -2.0474758, 0.5, 0.8347206)
+[node name="Pass" type="Button" parent="Control/HBoxContainer" unique_id=899921928]
+layout_mode = 2
+text = "Pass"
 
-[node name="AnimatedDie5" parent="." unique_id=1755423575 instance=ExtResource("2_vasa2")]
-transform = Transform3D(-5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, -5.9604645e-08, -2.0474758, 0.5, -1.778398)
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=844718345]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
 
-[node name="AnimatedDie6" parent="." unique_id=446228418 instance=ExtResource("2_vasa2")]
-transform = Transform3D(-5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, -5.9604645e-08, 2.1983805, 0.5, -1.6653605)
+[node name="TurnLabel" type="Label" parent="Control/VBoxContainer" unique_id=1785072653]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
+text = "Player 1's turn"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrentScore" type="Label" parent="Control/VBoxContainer" unique_id=1684285634]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
+text = "Current Score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BankedScore" type="Label" parent="Control/VBoxContainer" unique_id=933974442]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
+text = "Banked Score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1Score" type="Label" parent="Control/VBoxContainer" unique_id=387318515]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
+text = "Player 1 Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2Score" type="Label" parent="Control/VBoxContainer" unique_id=311615457]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
+text = "Player 2 Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DieSpawnPoints" type="Node3D" parent="." unique_id=1298518802]
+
+[node name="DieSpawnPoint1" type="Node3D" parent="DieSpawnPoints" unique_id=737069905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39706373, 0.5, 2.0220761)
+
+[node name="DieSpawnPoint2" type="Node3D" parent="DieSpawnPoints" unique_id=1807754915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.644919, 0.5, 0.9024205)
+
+[node name="DieSpawnPoint3" type="Node3D" parent="DieSpawnPoints" unique_id=1123458489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.96609735, 0.5, 0.063008785)
+
+[node name="DieSpawnPoint4" type="Node3D" parent="DieSpawnPoints" unique_id=200722340]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0474758, 0.5, 0.8347206)
+
+[node name="DieSpawnPoint5" type="Node3D" parent="DieSpawnPoints" unique_id=196692790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0474758, 0.5, -1.778398)
+
+[node name="DieSpawnPoint6" type="Node3D" parent="DieSpawnPoints" unique_id=1443221319]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1983805, 0.5, -1.6653605)
+
+[connection signal="pressed" from="Control/HBoxContainer/Roll" to="." method="player_roll"]
+[connection signal="pressed" from="Control/HBoxContainer/Pass" to="." method="progress_turn"]

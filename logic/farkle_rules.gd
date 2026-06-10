@@ -76,8 +76,8 @@ static func score_selection(p_selection: Array[Die]) -> int:
 		return 1200
 
 	if _is_continuous(die_count):
-		var extra_ones: int = max(die_count[1] - 1, 0)
-		var extra_fives: int = max(die_count[5] - 1, 0)
+		var extra_ones: int = max(die_count[1] - 1, 0) if die_count.has(1) else 0
+		var extra_fives: int = max(die_count[5] - 1, 0) if die_count.has(5) else 0
 		return 500 + (extra_ones * 100) + (extra_fives * 50)
 
 	var score := 0

@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://vw0fcjoowx35"]
+
+[ext_resource type="Script" uid="uid://b0pk73ui16cec" path="res://game/main_menu.gd" id="1_2gctw"]
+
+[node name="MainMenu" type="Control" unique_id=863194786]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2gctw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=555315090]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=604937919]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 48
+text = "FARKLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NavigationButtons" type="VBoxContainer" parent="VBoxContainer" unique_id=1223062053]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="StartButton" type="Button" parent="VBoxContainer/NavigationButtons" unique_id=327920420]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start Game"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/NavigationButtons" unique_id=1247415047]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/NavigationButtons/StartButton" to="." method="on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/NavigationButtons/QuitButton" to="." method="on_quit_pressed"]
