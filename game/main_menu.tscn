@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://dps6bi60poop1" path="res://shaders/ui_background_material.tres" id="2_20tr2"]
 [ext_resource type="Material" uid="uid://b3h6hxycksc6q" path="res://shaders/ui_blur_background.tres" id="3_2ed8k"]
 [ext_resource type="FontFile" uid="uid://byojuqq5fvxan" path="res://font/digitalts/DigitaltS-Orange.ttf" id="4_wo36y"]
-[ext_resource type="FontFile" uid="uid://b8scg2t2mwabx" path="res://font/Kwokwi.otf" id="5_t606k"]
+[ext_resource type="FontFile" uid="uid://dyhbmghi7i3tg" path="res://font/PolandCannedIntoKaito-j9OjM.ttf" id="5_t606k"]
 
 [node name="MainMenu" type="Control" unique_id=863194786]
 layout_mode = 3
