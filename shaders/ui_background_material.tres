@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dps6bi60poop1"]
+
+[ext_resource type="Shader" uid="uid://cgnptwnjqto8s" path="res://shaders/ui_background_material.gdshader" id="1_x30ob"]
+[ext_resource type="Texture2D" uid="uid://b4iiprqmdhuf7" path="res://dice/model/die_face_1.png" id="2_die_face_1"]
+[ext_resource type="Texture2D" uid="uid://bggxftk8l2bcs" path="res://dice/model/die_face_2.png" id="3_die_face_2"]
+[ext_resource type="Texture2D" uid="uid://bg5t4xquc2r0p" path="res://dice/model/die_face_3.png" id="4_die_face_3"]
+[ext_resource type="Texture2D" uid="uid://b1evx6t5osf8e" path="res://dice/model/die_face_4.png" id="5_die_face_4"]
+[ext_resource type="Texture2D" uid="uid://bwxphoeyl7503" path="res://dice/model/die_face_5.png" id="6_die_face_5"]
+[ext_resource type="Texture2D" uid="uid://b6pqst2i2tw7r" path="res://dice/model/die_face_6.png" id="7_die_face_6"]
+
+[resource]
+shader = ExtResource("1_x30ob")
+shader_parameter/die_face_1 = ExtResource("2_die_face_1")
+shader_parameter/die_face_2 = ExtResource("3_die_face_2")
+shader_parameter/die_face_3 = ExtResource("4_die_face_3")
+shader_parameter/die_face_4 = ExtResource("5_die_face_4")
+shader_parameter/die_face_5 = ExtResource("6_die_face_5")
+shader_parameter/die_face_6 = ExtResource("7_die_face_6")
+shader_parameter/pace = -9.999996334304797
+shader_parameter/gap = 200.00000298024
+shader_parameter/size = 150.0000021755752
+shader_parameter/blur = 0.0
+shader_parameter/angle = 60.00000357628801
+shader_parameter/background = Color(0.61960787, 0.77254903, 0.2901961, 1)
