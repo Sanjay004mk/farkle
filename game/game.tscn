@@ -39,27 +39,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=2082789002]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Roll" type="Button" parent="Control/HBoxContainer" unique_id=1495823261]
-layout_mode = 2
-text = "Roll"
-
-[node name="Pass" type="Button" parent="Control/HBoxContainer" unique_id=899921928]
-layout_mode = 2
-text = "Pass"
-
 [node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=844718345]
 layout_mode = 1
 anchors_preset = 5
@@ -79,6 +58,15 @@ text = "Player 1's turn"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TargetScore" type="Label" parent="Control/VBoxContainer" unique_id=835690175]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
+theme_override_fonts/font = ExtResource("3_dxrkv")
+theme_override_font_sizes/font_size = 24
+text = "Target: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CurrentScore" type="Label" parent="Control/VBoxContainer" unique_id=1684285634]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
@@ -94,24 +82,6 @@ theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.0470
 theme_override_fonts/font = ExtResource("4_dakft")
 theme_override_font_sizes/font_size = 24
 text = "Banked Score: 0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player1Score" type="Label" parent="Control/VBoxContainer" unique_id=387318515]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
-theme_override_fonts/font = ExtResource("5_u5opy")
-theme_override_font_sizes/font_size = 24
-text = "Player 1 Score: 0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player2Score" type="Label" parent="Control/VBoxContainer" unique_id=311615457]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
-theme_override_fonts/font = ExtResource("5_u5opy")
-theme_override_font_sizes/font_size = 24
-text = "Player 2 Score: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -137,6 +107,55 @@ Player 1 Wins"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Scores" type="HBoxContainer" parent="Control" unique_id=927095903]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Player1Score" type="Label" parent="Control/Scores" unique_id=387318515]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
+theme_override_fonts/font = ExtResource("5_u5opy")
+theme_override_font_sizes/font_size = 24
+text = "Player 1 Score: 0"
+vertical_alignment = 1
+
+[node name="Player2Score" type="Label" parent="Control/Scores" unique_id=311615457]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
+theme_override_fonts/font = ExtResource("5_u5opy")
+theme_override_font_sizes/font_size = 24
+text = "Player 2 Score: 0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="Control" unique_id=2082789002]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -40.0
+offset_right = 42.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Roll" type="Button" parent="Control/Buttons" unique_id=1495823261]
+layout_mode = 2
+text = "Roll"
+
+[node name="Pass" type="Button" parent="Control/Buttons" unique_id=899921928]
+layout_mode = 2
+text = "Pass"
+
 [node name="DieSpawnPoints" type="Node3D" parent="." unique_id=1298518802]
 
 [node name="DieSpawnPoint1" type="Node3D" parent="DieSpawnPoints" unique_id=737069905]
@@ -157,5 +176,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0474758, 0.5, -1.778398)
 [node name="DieSpawnPoint6" type="Node3D" parent="DieSpawnPoints" unique_id=1443221319]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1983805, 0.5, -1.6653605)
 
-[connection signal="pressed" from="Control/HBoxContainer/Roll" to="." method="player_roll"]
-[connection signal="pressed" from="Control/HBoxContainer/Pass" to="." method="progress_turn"]
+[connection signal="pressed" from="Control/Buttons/Roll" to="." method="player_roll"]
+[connection signal="pressed" from="Control/Buttons/Pass" to="." method="progress_turn"]

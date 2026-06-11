@@ -3,8 +3,9 @@ extends FarkleGame
 @onready var turn_label: Label = $Control/VBoxContainer/TurnLabel
 @onready var current_score: Label = $Control/VBoxContainer/CurrentScore
 @onready var banked_score: Label = $Control/VBoxContainer/BankedScore
-@onready var player_1_score: Label = $Control/VBoxContainer/Player1Score
-@onready var player_2_score: Label = $Control/VBoxContainer/Player2Score
+@onready var target_score: Label = $Control/VBoxContainer/TargetScore
+@onready var player_1_score: Label = $Control/Scores/Player1Score
+@onready var player_2_score: Label = $Control/Scores/Player2Score
 @onready var die_spawn_points: Array[Node3D] = [$DieSpawnPoints/DieSpawnPoint1, $DieSpawnPoints/DieSpawnPoint2, $DieSpawnPoints/DieSpawnPoint3, $DieSpawnPoints/DieSpawnPoint4, $DieSpawnPoints/DieSpawnPoint5, $DieSpawnPoints/DieSpawnPoint6]
 @onready var game_over_label: Label = $Control/GameOverLabel
 const ANIMATED_DIE = preload("uid://b21xwmel285do")
@@ -22,8 +23,9 @@ func _ready() -> void:
 
 	game_over.connect(_on_game_over)
 	player_switched.connect(func(): turn_label.text = "Player %d's turn" % [active_player_index + 1])
-	players[0].points_updated.connect(func(total): player_1_score.text = "Player 1's Score: %d" % [total])
-	players[1].points_updated.connect(func(total): player_2_score.text = "Player 2's Score: %d" % [total])
+	players[0].points_updated.connect(func(total): player_1_score.text = "Player 1 Score: %d" % [total])
+	players[1].points_updated.connect(func(total): player_2_score.text = "Player 2 Score: %d" % [total])
+	target_score.text = "Target Score: %d" % [FarkleGameState.target_score]
 
 	_hide_other_player_die()
 	active_player.roll()
