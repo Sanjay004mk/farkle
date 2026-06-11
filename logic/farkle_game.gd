@@ -5,7 +5,7 @@ class_name FarkleGame
 enum GameState { InTurn, InTransition }
 const MAX_DICE: int = 6
 
-var target_score: int = 5000
+
 var players: Array[Player] = []
 var active_player_index: int
 var active_player: Player:
@@ -19,6 +19,7 @@ var other_player: Player:
 var state: GameState = GameState.InTurn # TODO: Set from UI
 
 signal player_switched
+signal game_over(p_player_index)
 
 func _init() -> void:
 	for i in range(2):
@@ -52,8 +53,12 @@ func progress_turn() -> bool:
 
 func switch_player() -> void:
 	active_player.release_all_die()
-	active_player_index = (active_player_index + 1) % players.size()
 
+	if active_player.total_points >= FarkleGameState.target_score:
+		game_over.emit(active_player_index)
+		return
+
+	active_player_index = (active_player_index + 1) % players.size()
 	active_player.roll()
 
 	player_switched.emit()
