@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://3uoikeru431t" path="res://font/SuperPencil-ARGw7.ttf" id="3_dxrkv"]
 [ext_resource type="FontFile" uid="uid://cepac5swrbjfr" path="res://font/Matrixtype-lxMZX.ttf" id="4_dakft"]
 [ext_resource type="FontFile" uid="uid://bmp11sjtl51c1" path="res://font/SuperNormal-xRoj5.ttf" id="5_u5opy"]
+[ext_resource type="FontFile" uid="uid://vbaf4g4r61wy" path="res://font/VeryVeryPunkFont-ZpZ0K.ttf" id="6_dakft"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_l1rk1"]
 
@@ -111,6 +112,28 @@ theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.0470
 theme_override_fonts/font = ExtResource("5_u5opy")
 theme_override_font_sizes/font_size = 24
 text = "Player 2 Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="Control" unique_id=167510805]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
+theme_override_fonts/font = ExtResource("6_dakft")
+theme_override_font_sizes/font_size = 32
+text = "Game Over
+Player 1 Wins"
 horizontal_alignment = 1
 vertical_alignment = 1
 

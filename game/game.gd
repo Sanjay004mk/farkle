@@ -6,6 +6,7 @@ extends FarkleGame
 @onready var player_1_score: Label = $Control/VBoxContainer/Player1Score
 @onready var player_2_score: Label = $Control/VBoxContainer/Player2Score
 @onready var die_spawn_points: Array[Node3D] = [$DieSpawnPoints/DieSpawnPoint1, $DieSpawnPoints/DieSpawnPoint2, $DieSpawnPoints/DieSpawnPoint3, $DieSpawnPoints/DieSpawnPoint4, $DieSpawnPoints/DieSpawnPoint5, $DieSpawnPoints/DieSpawnPoint6]
+@onready var game_over_label: Label = $Control/GameOverLabel
 const ANIMATED_DIE = preload("uid://b21xwmel285do")
 
 func _ready() -> void:
@@ -19,7 +20,7 @@ func _ready() -> void:
 			player.assign_die(die, i)
 			die.set_on_die_clicked_callback(func(): toggle_select(player, i))
 
-
+	game_over.connect(_on_game_over)
 	player_switched.connect(func(): turn_label.text = "Player %d's turn" % [active_player_index + 1])
 	players[0].points_updated.connect(func(total): player_1_score.text = "Player 1's Score: %d" % [total])
 	players[1].points_updated.connect(func(total): player_2_score.text = "Player 2's Score: %d" % [total])
@@ -27,6 +28,10 @@ func _ready() -> void:
 	_hide_other_player_die()
 	active_player.roll()
 	_check_valid_turn()
+
+func _on_game_over(p_player_index: int):
+	game_over_label.text = "Game Over\nPlayer %d Wins" % [p_player_index + 1]
+	game_over_label.show()
 
 func _check_valid_turn():
 	while not FarkleRules.has_valid_selection(active_player.unused_dice):
