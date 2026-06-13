@@ -23,8 +23,6 @@ var banked_score: int:
 			ret += points
 		return ret
 
-var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
-
 signal points_updated(total_points)
 
 func _init() -> void:
@@ -67,7 +65,7 @@ func roll() -> bool:
 
 	for die in dice:
 		if not (used_dice.has(die) or selected_dice.has(die)):
-			die.roll(_rng.randf())
+			die.roll(randf())
 
 
 	return true

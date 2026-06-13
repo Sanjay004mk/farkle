@@ -6,6 +6,8 @@
 [ext_resource type="FontFile" uid="uid://byojuqq5fvxan" path="res://font/digitalts/DigitaltS-Orange.ttf" id="4_wo36y"]
 [ext_resource type="PackedScene" uid="uid://buwcj4c3j0vdh" path="res://ui/main_menu_button.tscn" id="5_7k2rn"]
 [ext_resource type="FontFile" uid="uid://3uoikeru431t" path="res://font/SuperPencil-ARGw7.ttf" id="5_t606k"]
+[ext_resource type="PackedScene" uid="uid://rokadjiy1ca2" path="res://ui/animated_label.tscn" id="7_wr6kv"]
+[ext_resource type="FontFile" uid="uid://dyhbmghi7i3tg" path="res://font/PolandCannedIntoKaito-j9OjM.ttf" id="8_6xmkl"]
 
 [node name="MainMenu" type="Control" unique_id=863194786]
 layout_mode = 3
@@ -16,7 +18,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2gctw")
 
-[node name="Background" type="ColorRect" parent="." unique_id=121838912]
+[node name="BlurredBackground" type="Control" parent="." unique_id=1056057261]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="BlurredBackground" unique_id=121838912]
 material = ExtResource("2_20tr2")
 layout_mode = 1
 anchors_preset = 15
@@ -25,7 +35,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Blur" type="ColorRect" parent="." unique_id=1045550082]
+[node name="Blur" type="ColorRect" parent="BlurredBackground" unique_id=1045550082]
 material = ExtResource("3_2ed8k")
 layout_mode = 1
 anchors_preset = 15
@@ -34,35 +44,42 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=555315090]
+[node name="TitleAndMainMenuMargin" type="MarginContainer" parent="." unique_id=1559519087]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 32
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=604937919]
+[node name="HBoxContainer" type="HBoxContainer" parent="TitleAndMainMenuMargin" unique_id=1800592276]
+layout_mode = 2
+
+[node name="TitleAndMainMenu" type="VBoxContainer" parent="TitleAndMainMenuMargin/HBoxContainer" unique_id=555315090]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu" unique_id=604937919]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("4_wo36y")
 theme_override_font_sizes/font_size = 96
 text = "FARKLE"
-horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NavigationButtons" type="VBoxContainer" parent="VBoxContainer" unique_id=1223062053]
+[node name="NavigationButtons" type="VBoxContainer" parent="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu" unique_id=1223062053]
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_constants/separation = 48
 alignment = 1
 
-[node name="Play" parent="VBoxContainer/NavigationButtons" unique_id=1023268900 instance=ExtResource("5_7k2rn")]
+[node name="Play" parent="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu/NavigationButtons" unique_id=1023268900 instance=ExtResource("5_7k2rn")]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 
-[node name="AnimatedLabel" parent="VBoxContainer/NavigationButtons/Play/MarginContainer" parent_id_path=PackedInt32Array(1023268900, 453075192) index="0" unique_id=1132354834]
+[node name="AnimatedLabel" parent="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu/NavigationButtons/Play/MarginContainer" parent_id_path=PackedInt32Array(1023268900, 453075192) index="0" unique_id=1132354834]
 theme_override_fonts/normal_font = ExtResource("5_t606k")
 theme_override_fonts/bold_font = ExtResource("5_t606k")
 theme_override_fonts/bold_italics_font = ExtResource("5_t606k")
@@ -75,11 +92,11 @@ theme_override_font_sizes/italics_font_size = 48
 theme_override_font_sizes/mono_font_size = 48
 text = "Play"
 
-[node name="Rules" parent="VBoxContainer/NavigationButtons" unique_id=272770837 instance=ExtResource("5_7k2rn")]
+[node name="Rules" parent="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu/NavigationButtons" unique_id=272770837 instance=ExtResource("5_7k2rn")]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 
-[node name="AnimatedLabel" parent="VBoxContainer/NavigationButtons/Rules/MarginContainer" parent_id_path=PackedInt32Array(272770837, 453075192) index="0" unique_id=1132354834]
+[node name="AnimatedLabel" parent="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu/NavigationButtons/Rules/MarginContainer" parent_id_path=PackedInt32Array(272770837, 453075192) index="0" unique_id=1132354834]
 theme_override_fonts/normal_font = ExtResource("5_t606k")
 theme_override_fonts/bold_font = ExtResource("5_t606k")
 theme_override_fonts/bold_italics_font = ExtResource("5_t606k")
@@ -92,11 +109,11 @@ theme_override_font_sizes/italics_font_size = 48
 theme_override_font_sizes/mono_font_size = 48
 text = "Rules"
 
-[node name="Exit" parent="VBoxContainer/NavigationButtons" unique_id=1978366653 instance=ExtResource("5_7k2rn")]
+[node name="Exit" parent="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu/NavigationButtons" unique_id=1978366653 instance=ExtResource("5_7k2rn")]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 
-[node name="AnimatedLabel" parent="VBoxContainer/NavigationButtons/Exit/MarginContainer" parent_id_path=PackedInt32Array(1978366653, 453075192) index="0" unique_id=1132354834]
+[node name="AnimatedLabel" parent="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu/NavigationButtons/Exit/MarginContainer" parent_id_path=PackedInt32Array(1978366653, 453075192) index="0" unique_id=1132354834]
 theme_override_fonts/normal_font = ExtResource("5_t606k")
 theme_override_fonts/bold_font = ExtResource("5_t606k")
 theme_override_fonts/bold_italics_font = ExtResource("5_t606k")
@@ -109,10 +126,50 @@ theme_override_font_sizes/italics_font_size = 48
 theme_override_font_sizes/mono_font_size = 48
 text = "Exit"
 
-[connection signal="pressed" from="VBoxContainer/NavigationButtons/Play/MarginContainer/LinkButton" to="." method="on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/NavigationButtons/Rules/MarginContainer/LinkButton" to="." method="on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/NavigationButtons/Exit/MarginContainer/LinkButton" to="." method="on_quit_pressed"]
+[node name="GameDifficultySelectorMargin" type="MarginContainer" parent="TitleAndMainMenuMargin/HBoxContainer" unique_id=1476683666]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
 
-[editable path="VBoxContainer/NavigationButtons/Play"]
-[editable path="VBoxContainer/NavigationButtons/Rules"]
-[editable path="VBoxContainer/NavigationButtons/Exit"]
+[node name="GameDifficultySelector" type="PanelContainer" parent="TitleAndMainMenuMargin/HBoxContainer/GameDifficultySelectorMargin" unique_id=1336397051]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleAndMainMenuMargin/HBoxContainer/GameDifficultySelectorMargin/GameDifficultySelector" unique_id=737934755]
+layout_mode = 2
+alignment = 1
+
+[node name="AnimatedLabel" parent="TitleAndMainMenuMargin/HBoxContainer/GameDifficultySelectorMargin/GameDifficultySelector/VBoxContainer" unique_id=1424242963 instance=ExtResource("7_wr6kv")]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("8_6xmkl")
+theme_override_fonts/bold_font = ExtResource("8_6xmkl")
+theme_override_fonts/bold_italics_font = ExtResource("8_6xmkl")
+theme_override_fonts/italics_font = ExtResource("8_6xmkl")
+theme_override_fonts/mono_font = ExtResource("8_6xmkl")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+text = "Select Difficulty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DifficultyOptions" type="VBoxContainer" parent="TitleAndMainMenuMargin/HBoxContainer/GameDifficultySelectorMargin/GameDifficultySelector/VBoxContainer" unique_id=1270211440]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+alignment = 1
+
+[connection signal="pressed" from="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu/NavigationButtons/Play/MarginContainer/LinkButton" to="." method="on_start_pressed"]
+[connection signal="pressed" from="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu/NavigationButtons/Rules/MarginContainer/LinkButton" to="." method="on_start_pressed"]
+[connection signal="pressed" from="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu/NavigationButtons/Exit/MarginContainer/LinkButton" to="." method="on_quit_pressed"]
+
+[editable path="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu/NavigationButtons/Play"]
+[editable path="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu/NavigationButtons/Rules"]
+[editable path="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu/NavigationButtons/Exit"]
