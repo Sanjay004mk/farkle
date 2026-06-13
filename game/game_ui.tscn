@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://wh3ylu0dara" path="res://game/game_ui.gd" id="1_sxc2a"]
 [ext_resource type="FontFile" uid="uid://3uoikeru431t" path="res://font/SuperPencil-ARGw7.ttf" id="1_xnou0"]
 [ext_resource type="Material" uid="uid://dps6bi60poop1" path="res://shaders/ui_background_material.tres" id="2_io52l"]
-[ext_resource type="FontFile" uid="uid://cepac5swrbjfr" path="res://font/Matrixtype-lxMZX.ttf" id="2_sxc2a"]
 [ext_resource type="FontFile" uid="uid://vbaf4g4r61wy" path="res://font/VeryVeryPunkFont-ZpZ0K.ttf" id="3_1bhw7"]
 [ext_resource type="Material" uid="uid://b3h6hxycksc6q" path="res://shaders/ui_blur_background.tres" id="3_b3gjf"]
 [ext_resource type="FontFile" uid="uid://bmp11sjtl51c1" path="res://font/SuperNormal-xRoj5.ttf" id="4_6qftt"]
 [ext_resource type="PackedScene" uid="uid://g45v7skopm7n" path="res://game/game.tscn" id="6_1bhw7"]
+[ext_resource type="PackedScene" uid="uid://buwcj4c3j0vdh" path="res://ui/main_menu_button.tscn" id="8_io52l"]
+[ext_resource type="FontFile" uid="uid://dyhbmghi7i3tg" path="res://font/PolandCannedIntoKaito-j9OjM.ttf" id="9_b3gjf"]
 
 [node name="GameUI" type="Control" unique_id=2055430224]
 layout_mode = 3
@@ -37,37 +38,97 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=1097085292]
+[node name="ScoreAndTarget" type="HBoxContainer" parent="." unique_id=1421155772]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="AspectRatioContainer" unique_id=687486299]
+[node name="Target" type="VBoxContainer" parent="ScoreAndTarget" unique_id=592826900]
+layout_mode = 2
+alignment = 1
+
+[node name="TargetScore" type="Label" parent="ScoreAndTarget/Target" unique_id=1114042245]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
+theme_override_fonts/font = ExtResource("1_xnou0")
+theme_override_font_sizes/font_size = 24
+text = "Target: 0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="ScoreAndTarget/Target" unique_id=1894512936]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Player1ScoreLabel" type="Label" parent="ScoreAndTarget/Target" unique_id=572084658]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
+theme_override_fonts/font = ExtResource("4_6qftt")
+theme_override_font_sizes/font_size = 24
+text = "Player 1 Score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1Score" type="Label" parent="ScoreAndTarget/Target" unique_id=2082437091]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
+theme_override_fonts/font = ExtResource("4_6qftt")
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer2" type="Control" parent="ScoreAndTarget/Target" unique_id=768689777]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="Player2ScoreLabel" type="Label" parent="ScoreAndTarget/Target" unique_id=155756139]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
+theme_override_fonts/font = ExtResource("4_6qftt")
+theme_override_font_sizes/font_size = 24
+text = "Player 2 Score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2Score" type="Label" parent="ScoreAndTarget/Target" unique_id=144449445]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
+theme_override_fonts/font = ExtResource("4_6qftt")
+theme_override_font_sizes/font_size = 24
+text = " 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameViewport" type="AspectRatioContainer" parent="ScoreAndTarget" unique_id=1097085292]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="ScoreAndTarget/GameViewport" unique_id=687486299]
 layout_mode = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="AspectRatioContainer/SubViewportContainer" unique_id=2063530011]
+[node name="SubViewport" type="SubViewport" parent="ScoreAndTarget/GameViewport/SubViewportContainer" unique_id=2063530011]
 handle_input_locally = false
 physics_object_picking = true
 size = Vector2i(648, 648)
 render_target_update_mode = 4
 
-[node name="game" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=1679775102 instance=ExtResource("6_1bhw7")]
+[node name="game" parent="ScoreAndTarget/GameViewport/SubViewportContainer/SubViewport" unique_id=1679775102 instance=ExtResource("6_1bhw7")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2136690142]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
+[node name="Score" type="VBoxContainer" parent="ScoreAndTarget" unique_id=1024760929]
+layout_mode = 2
+alignment = 1
 
-[node name="TurnLabel" type="Label" parent="VBoxContainer" unique_id=2085020854]
+[node name="TurnLabel" type="Label" parent="ScoreAndTarget/Score" unique_id=2085020854]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
 theme_override_fonts/font = ExtResource("1_xnou0")
@@ -76,30 +137,47 @@ text = "Player 1's turn"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TargetScore" type="Label" parent="VBoxContainer" unique_id=1114042245]
+[node name="Spacer" type="Control" parent="ScoreAndTarget/Score" unique_id=431118785]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="CurrentScoreLabel" type="Label" parent="ScoreAndTarget/Score" unique_id=336618946]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
-theme_override_fonts/font = ExtResource("1_xnou0")
+theme_override_fonts/font = ExtResource("4_6qftt")
 theme_override_font_sizes/font_size = 24
-text = "Target: 0"
+text = "Current Score:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CurrentScore" type="Label" parent="VBoxContainer" unique_id=336618946]
+[node name="CurrentScore" type="Label" parent="ScoreAndTarget/Score" unique_id=1968023700]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
-theme_override_fonts/font = ExtResource("2_sxc2a")
+theme_override_fonts/font = ExtResource("4_6qftt")
 theme_override_font_sizes/font_size = 24
-text = "Current Score: 0"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BankedScore" type="Label" parent="VBoxContainer" unique_id=1867409502]
+[node name="Spacer2" type="Control" parent="ScoreAndTarget/Score" unique_id=632140461]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="BankedScoreLabel" type="Label" parent="ScoreAndTarget/Score" unique_id=1867409502]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
-theme_override_fonts/font = ExtResource("2_sxc2a")
+theme_override_fonts/font = ExtResource("4_6qftt")
 theme_override_font_sizes/font_size = 24
-text = "Banked Score: 0"
+text = "Banked Score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BankedScore" type="Label" parent="ScoreAndTarget/Score" unique_id=311195679]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
+theme_override_fonts/font = ExtResource("4_6qftt")
+theme_override_font_sizes/font_size = 24
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -111,49 +189,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -103.0
+offset_top = -32.5
+offset_right = 103.0
+offset_bottom = 32.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
+theme_override_colors/font_color = Color(0.021434637, 0.021434635, 0.021434633, 1)
 theme_override_fonts/font = ExtResource("3_1bhw7")
 theme_override_font_sizes/font_size = 32
 text = "Game Over
 Player 1 Wins"
 horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Scores" type="HBoxContainer" parent="." unique_id=1932280495]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -11.0
-offset_bottom = 11.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Player1Score" type="Label" parent="Scores" unique_id=572084658]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
-theme_override_fonts/font = ExtResource("4_6qftt")
-theme_override_font_sizes/font_size = 24
-text = "Player 1 Score: 0"
-vertical_alignment = 1
-
-[node name="Player2Score" type="Label" parent="Scores" unique_id=155756139]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
-theme_override_fonts/font = ExtResource("4_6qftt")
-theme_override_font_sizes/font_size = 24
-text = "Player 2 Score: 0"
-horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Buttons" type="HBoxContainer" parent="." unique_id=2101859298]
@@ -169,13 +216,40 @@ offset_right = 42.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Roll" type="Button" parent="Buttons" unique_id=1429988942]
+[node name="Roll" parent="Buttons" unique_id=1023268900 instance=ExtResource("8_io52l")]
 layout_mode = 2
+
+[node name="AnimatedLabel" parent="Buttons/Roll/MarginContainer" parent_id_path=PackedInt32Array(1023268900, 453075192) index="0" unique_id=1132354834]
+theme_override_fonts/normal_font = ExtResource("9_b3gjf")
+theme_override_fonts/bold_font = ExtResource("9_b3gjf")
+theme_override_fonts/bold_italics_font = ExtResource("9_b3gjf")
+theme_override_fonts/italics_font = ExtResource("9_b3gjf")
+theme_override_fonts/mono_font = ExtResource("9_b3gjf")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
 text = "Roll"
 
-[node name="Pass" type="Button" parent="Buttons" unique_id=1693236247]
+[node name="Pass" parent="Buttons" unique_id=799810781 instance=ExtResource("8_io52l")]
 layout_mode = 2
+
+[node name="AnimatedLabel" parent="Buttons/Pass/MarginContainer" parent_id_path=PackedInt32Array(799810781, 453075192) index="0" unique_id=1132354834]
+theme_override_fonts/normal_font = ExtResource("9_b3gjf")
+theme_override_fonts/bold_font = ExtResource("9_b3gjf")
+theme_override_fonts/bold_italics_font = ExtResource("9_b3gjf")
+theme_override_fonts/italics_font = ExtResource("9_b3gjf")
+theme_override_fonts/mono_font = ExtResource("9_b3gjf")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
 text = "Pass"
 
-[connection signal="pressed" from="Buttons/Roll" to="." method="_on_roll"]
-[connection signal="pressed" from="Buttons/Pass" to="." method="_on_pass"]
+[connection signal="pressed" from="Buttons/Roll/MarginContainer/LinkButton" to="." method="_on_roll"]
+[connection signal="pressed" from="Buttons/Pass/MarginContainer/LinkButton" to="." method="_on_pass"]
+
+[editable path="Buttons/Roll"]
+[editable path="Buttons/Pass"]

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://rokadjiy1ca2"]
+
+[ext_resource type="Script" uid="uid://ctmeansl1m2sh" path="res://ui/animated_label.gd" id="1_35ibu"]
+[ext_resource type="Script" uid="uid://djpylsak5kwqj" path="res://ui/text_effects/scale_pulse_effect.gd" id="1_nongt"]
+[ext_resource type="Script" uid="uid://duucibh8jsl7n" path="res://ui/text_effects/wave_effect.gd" id="2_ouai5"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ouai5"]
+script = ExtResource("1_nongt")
+metadata/_custom_type_script = "uid://djpylsak5kwqj"
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_2tpki"]
+script = ExtResource("2_ouai5")
+metadata/_custom_type_script = "uid://duucibh8jsl7n"
+
+[node name="AnimatedLabel" type="RichTextLabel" unique_id=1132354834]
+clip_contents = false
+offset_right = 40.0
+offset_bottom = 40.0
+bbcode_enabled = true
+custom_effects = [SubResource("RichTextEffect_ouai5"), SubResource("RichTextEffect_2tpki")]
+script = ExtResource("1_35ibu")

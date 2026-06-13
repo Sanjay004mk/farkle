@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c3sjd1dhjmmv8"]
+
+[ext_resource type="Shader" uid="uid://14r60lm7kdgg" path="res://shaders/ui_dot_matrix_background.gdshader" id="1_ts3s8"]
+
+[resource]
+shader = ExtResource("1_ts3s8")

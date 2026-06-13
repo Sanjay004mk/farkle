@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://buwcj4c3j0vdh"]
+
+[ext_resource type="Script" uid="uid://b7t7v3nrqf6vb" path="res://ui/main_menu_button.gd" id="1_hbi5e"]
+[ext_resource type="Material" uid="uid://c3sjd1dhjmmv8" path="res://shaders/ui_dot_matrix_background.tres" id="1_wglb2"]
+[ext_resource type="PackedScene" uid="uid://rokadjiy1ca2" path="res://ui/animated_label.tscn" id="2_cygm6"]
+
+[node name="MainMenuButton" type="PanelContainer" unique_id=1023268900]
+material = ExtResource("1_wglb2")
+instance_shader_parameters/center_scale = 2.0
+instance_shader_parameters/dot_color = Color(0.12225223, 0.12225223, 0.12225223, 1)
+instance_shader_parameters/edge_falloff = 1.00000004424012
+instance_shader_parameters/grid_spacing = 4.0
+instance_shader_parameters/panel_size = Vector2(48, 12)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_hbi5e")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=453075192]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 6
+
+[node name="AnimatedLabel" parent="MarginContainer" unique_id=1132354834 instance=ExtResource("2_cygm6")]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="MarginContainer" unique_id=722969515]
+layout_mode = 2
+mouse_filter = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_enter"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exit"]

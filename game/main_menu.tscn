@@ -4,7 +4,8 @@
 [ext_resource type="Material" uid="uid://dps6bi60poop1" path="res://shaders/ui_background_material.tres" id="2_20tr2"]
 [ext_resource type="Material" uid="uid://b3h6hxycksc6q" path="res://shaders/ui_blur_background.tres" id="3_2ed8k"]
 [ext_resource type="FontFile" uid="uid://byojuqq5fvxan" path="res://font/digitalts/DigitaltS-Orange.ttf" id="4_wo36y"]
-[ext_resource type="FontFile" uid="uid://dyhbmghi7i3tg" path="res://font/PolandCannedIntoKaito-j9OjM.ttf" id="5_t606k"]
+[ext_resource type="PackedScene" uid="uid://buwcj4c3j0vdh" path="res://ui/main_menu_button.tscn" id="5_7k2rn"]
+[ext_resource type="FontFile" uid="uid://3uoikeru431t" path="res://font/SuperPencil-ARGw7.ttf" id="5_t606k"]
 
 [node name="MainMenu" type="Control" unique_id=863194786]
 layout_mode = 3
@@ -57,19 +58,61 @@ size_flags_stretch_ratio = 2.0
 theme_override_constants/separation = 48
 alignment = 1
 
-[node name="StartButton" type="Button" parent="VBoxContainer/NavigationButtons" unique_id=327920420]
+[node name="Play" parent="VBoxContainer/NavigationButtons" unique_id=1023268900 instance=ExtResource("5_7k2rn")]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("5_t606k")
-theme_override_font_sizes/font_size = 48
+
+[node name="AnimatedLabel" parent="VBoxContainer/NavigationButtons/Play/MarginContainer" parent_id_path=PackedInt32Array(1023268900, 453075192) index="0" unique_id=1132354834]
+theme_override_fonts/normal_font = ExtResource("5_t606k")
+theme_override_fonts/bold_font = ExtResource("5_t606k")
+theme_override_fonts/bold_italics_font = ExtResource("5_t606k")
+theme_override_fonts/italics_font = ExtResource("5_t606k")
+theme_override_fonts/mono_font = ExtResource("5_t606k")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
 text = "Play"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer/NavigationButtons" unique_id=1247415047]
+[node name="Rules" parent="VBoxContainer/NavigationButtons" unique_id=272770837 instance=ExtResource("5_7k2rn")]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("5_t606k")
-theme_override_font_sizes/font_size = 48
+
+[node name="AnimatedLabel" parent="VBoxContainer/NavigationButtons/Rules/MarginContainer" parent_id_path=PackedInt32Array(272770837, 453075192) index="0" unique_id=1132354834]
+theme_override_fonts/normal_font = ExtResource("5_t606k")
+theme_override_fonts/bold_font = ExtResource("5_t606k")
+theme_override_fonts/bold_italics_font = ExtResource("5_t606k")
+theme_override_fonts/italics_font = ExtResource("5_t606k")
+theme_override_fonts/mono_font = ExtResource("5_t606k")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
+text = "Rules"
+
+[node name="Exit" parent="VBoxContainer/NavigationButtons" unique_id=1978366653 instance=ExtResource("5_7k2rn")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="AnimatedLabel" parent="VBoxContainer/NavigationButtons/Exit/MarginContainer" parent_id_path=PackedInt32Array(1978366653, 453075192) index="0" unique_id=1132354834]
+theme_override_fonts/normal_font = ExtResource("5_t606k")
+theme_override_fonts/bold_font = ExtResource("5_t606k")
+theme_override_fonts/bold_italics_font = ExtResource("5_t606k")
+theme_override_fonts/italics_font = ExtResource("5_t606k")
+theme_override_fonts/mono_font = ExtResource("5_t606k")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
 text = "Exit"
 
-[connection signal="pressed" from="VBoxContainer/NavigationButtons/StartButton" to="." method="on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/NavigationButtons/QuitButton" to="." method="on_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/NavigationButtons/Play/MarginContainer/LinkButton" to="." method="on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/NavigationButtons/Rules/MarginContainer/LinkButton" to="." method="on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/NavigationButtons/Exit/MarginContainer/LinkButton" to="." method="on_quit_pressed"]
+
+[editable path="VBoxContainer/NavigationButtons/Play"]
+[editable path="VBoxContainer/NavigationButtons/Rules"]
+[editable path="VBoxContainer/NavigationButtons/Exit"]
