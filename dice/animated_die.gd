@@ -5,6 +5,7 @@ class_name AnimatedDie
 @onready var path_follow_3d: PathFollow3D = $Path3D/PathFollow3D
 @onready var dice: Node3D = $Path3D/PathFollow3D/Node3D/dice
 @onready var area_3d: Area3D = $Path3D/PathFollow3D/Node3D/dice/Area3D
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 const _DIE_NUMBER_FACES_AND_ANGLES: Array = [
 	[Vector3.FORWARD, 90],
@@ -53,7 +54,9 @@ func roll(p_distribution: float) -> int:
 	_roll_tween = create_tween().set_parallel(true)
 	dice.rotate(Vector3.UP, deg_to_rad(randf_range(-10, 10)))
 
-	_roll_tween.tween_property(path_follow_3d, "progress_ratio", 1.0, 1.0 + randf() * 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	var rand_delay := randf() * 0.5
+	_roll_tween.tween_property(path_follow_3d, "progress_ratio", 1.0, 1.0 + rand_delay).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	_roll_tween.tween_callback(func(): audio_stream_player_3d.play()).set_delay(0.5 + rand_delay)
 	return _number
 
 func toggle_select(p_selected: bool):

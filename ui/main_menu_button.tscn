@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b7t7v3nrqf6vb" path="res://ui/main_menu_button.gd" id="1_hbi5e"]
 [ext_resource type="Material" uid="uid://c3sjd1dhjmmv8" path="res://shaders/ui_dot_matrix_background.tres" id="1_wglb2"]
 [ext_resource type="PackedScene" uid="uid://rokadjiy1ca2" path="res://ui/animated_label.tscn" id="2_cygm6"]
+[ext_resource type="AudioStream" uid="uid://3ch60tumv5jb" path="res://sounds/bong_001.ogg" id="4_dk1km"]
 
 [node name="MainMenuButton" type="PanelContainer" unique_id=1023268900]
 material = ExtResource("1_wglb2")
@@ -35,6 +36,9 @@ vertical_alignment = 1
 [node name="LinkButton" type="LinkButton" parent="MarginContainer" unique_id=722969515]
 layout_mode = 2
 mouse_filter = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=36160801]
+stream = ExtResource("4_dk1km")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_enter"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exit"]
