@@ -26,7 +26,7 @@ func play_turn(p_on_turn_complete: Callable):
 		for selection in possible_selections:
 			var selection_score = FarkleRules.score_selection(selection)
 			var next_point = banked_score + selection_score
-			scored_selections.append([selection, DIE_ROLL_DATA[next_point][used_dice.size() + selection.size()]])
+			scored_selections.append([selection, DIE_ROLL_DATA[next_point][(used_dice.size() + selection.size()) % 6]])
 
 		scored_selections.sort_custom(func(a, b): return a.back()[0] > b.back()[0])
 
