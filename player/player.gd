@@ -40,14 +40,18 @@ func assign_die(p_die: Die, p_index: int):
 ##	0 => die is selected
 ##	1 => die is unselected
 func toggle_select(p_index: int) -> int:
-	if used_dice.has(dice[p_index]):
+	var die = dice[p_index]
+	return toggle_select_die(die)
+
+func toggle_select_die(p_die: Die) -> int:
+	if used_dice.has(p_die):
 		return -1
 
-	if selected_dice.has(dice[p_index]):
-		selected_dice.erase(dice[p_index])
+	if selected_dice.has(p_die):
+		selected_dice.erase(p_die)
 		return 1
 
-	selected_dice.append(dice[p_index])
+	selected_dice.append(p_die)
 	return 0
 
 func roll() -> bool:

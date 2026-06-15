@@ -26,3 +26,9 @@ func on_start_pressed() -> void:
 func on_quit_pressed() -> void:
 	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 	get_tree().quit()
+
+func on_mode_selected(p_mode: int):
+	if p_mode == 0:
+		FarkleGameState.vs_mode = FarkleGameState.VsMode.VS_Computer
+	else:
+		FarkleGameState.vs_mode = FarkleGameState.VsMode.VS_Player

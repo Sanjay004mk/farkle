@@ -161,6 +161,16 @@ text = "Select Difficulty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="OptionButton" type="OptionButton" parent="TitleAndMainMenuMargin/HBoxContainer/GameDifficultySelectorMargin/GameDifficultySelector/VBoxContainer" unique_id=1196710248]
+layout_mode = 2
+size_flags_horizontal = 4
+selected = 0
+item_count = 2
+popup/item_0/text = "Vs Computer"
+popup/item_0/id = 0
+popup/item_1/text = "Vs Player"
+popup/item_1/id = 1
+
 [node name="DifficultyOptions" type="VBoxContainer" parent="TitleAndMainMenuMargin/HBoxContainer/GameDifficultySelectorMargin/GameDifficultySelector/VBoxContainer" unique_id=1270211440]
 layout_mode = 2
 size_flags_vertical = 3
@@ -176,6 +186,7 @@ parameters/looping = true
 [connection signal="pressed" from="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu/NavigationButtons/Play/MarginContainer/LinkButton" to="." method="on_start_pressed"]
 [connection signal="pressed" from="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu/NavigationButtons/Rules/MarginContainer/LinkButton" to="." method="on_start_pressed"]
 [connection signal="pressed" from="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu/NavigationButtons/Exit/MarginContainer/LinkButton" to="." method="on_quit_pressed"]
+[connection signal="item_selected" from="TitleAndMainMenuMargin/HBoxContainer/GameDifficultySelectorMargin/GameDifficultySelector/VBoxContainer/OptionButton" to="." method="on_mode_selected"]
 
 [editable path="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu/NavigationButtons/Play"]
 [editable path="TitleAndMainMenuMargin/HBoxContainer/TitleAndMainMenu/NavigationButtons/Rules"]

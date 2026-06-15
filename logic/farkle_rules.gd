@@ -2,6 +2,23 @@ extends Node
 
 class_name FarkleRules
 
+static func get_all_valid_selections(p_dice: Array[Die]) -> Array:
+	var valid_selections: Array = []
+	_get_all_valid_selections_recursive(p_dice, 0, [], valid_selections)
+	return valid_selections
+
+static func _get_all_valid_selections_recursive(p_dice: Array[Die], p_index: int, p_current: Array[Die], p_valid_selections: Array):
+	if p_index == p_dice.size():
+		if is_valid_selection(p_current):
+			p_valid_selections.append(p_current.duplicate())
+		return
+
+	_get_all_valid_selections_recursive(p_dice, p_index + 1, p_current, p_valid_selections)
+
+	p_current.append(p_dice[p_index])
+	_get_all_valid_selections_recursive(p_dice, p_index + 1, p_current, p_valid_selections)
+	p_current.pop_back()
+
 static func has_valid_selection(p_dice: Array[Die]) -> bool:
 	for die in p_dice:
 		if die.number == 1 or die.number == 5:
@@ -85,8 +102,7 @@ static func score_selection(p_selection: Array[Die]) -> int:
 		var count: int = die_count[number]
 		if count >= 3:
 			var points: int = 1000 if number == 1 else 100 * number
-			for i in range(3, count):
-				points *= 2
+			points *= max(count - 2, 1)
 			score += points
 		else:
 			if number == 1:

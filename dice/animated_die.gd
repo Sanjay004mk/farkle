@@ -45,9 +45,7 @@ func _reset_die_transform():
 	path_follow_3d.progress_ratio = 0.0
 	dice.rotation = Vector3.ZERO
 
-func roll(p_distribution: float) -> int:
-	super(p_distribution)
-
+func animate_roll() -> void:
 	_reset_die_transform()
 	_orient_die()
 
@@ -57,7 +55,6 @@ func roll(p_distribution: float) -> int:
 	var rand_delay := randf() * 0.5
 	_roll_tween.tween_property(path_follow_3d, "progress_ratio", 1.0, 1.0 + rand_delay).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	_roll_tween.tween_callback(func(): audio_stream_player_3d.play()).set_delay(0.5 + rand_delay)
-	return _number
 
 func toggle_select(p_selected: bool):
 	if _selection_tween:
