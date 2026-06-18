@@ -19,7 +19,7 @@ func play_turn(p_on_turn_complete: Callable):
 		if game.active_player != self or not FarkleRules.has_valid_selection(unused_dice):
 			break
 
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(2.0).timeout
 
 		var possible_selections = FarkleRules.get_all_valid_selections(unused_dice)
 		var scored_selections = []

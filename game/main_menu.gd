@@ -19,7 +19,7 @@ func on_start_pressed() -> void:
 		button.text = "%d Points" % option
 		button.pressed.connect(func(): 
 			FarkleGameState.target_score = option
-			get_tree().change_scene_to_file("res://game/game_ui.tscn")
+			get_tree().change_scene_to_file("res://game/game.tscn")
 		)
 		difficulty_options.add_child(button)
 

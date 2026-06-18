@@ -92,6 +92,8 @@ func score() -> int:
 	return round_score
 
 func release_all_die():
+	for die in dice:
+		die.toggle_select(false)
 	selected_dice.clear()
 	used_dice.clear()
 	round_points.clear()

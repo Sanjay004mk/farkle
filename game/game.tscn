@@ -2,46 +2,73 @@
 
 [ext_resource type="Script" uid="uid://b8n27bckhdxo" path="res://game/game.gd" id="1_h7iqs"]
 [ext_resource type="Environment" uid="uid://gys114q4e4c8" path="res://game/game_environment.tres" id="1_l1rk1"]
-[ext_resource type="Script" uid="uid://cxu02ggkwphrj" path="res://game/targeted_camera.gd" id="7_u5opy"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_l1rk1"]
+[ext_resource type="PackedScene" uid="uid://bxvk0ir57vyq4" path="res://game/model/floor.glb" id="3_4fuuu"]
+[ext_resource type="PackedScene" uid="uid://c5ibl57r04nnf" path="res://game/game_ui.tscn" id="5_dxrkv"]
 
 [node name="game" type="Node3D" unique_id=1679775102]
 script = ExtResource("1_h7iqs")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2089636971]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.8987842, 0)
-light_energy = 3.0
+light_color = Color(1, 0.7411765, 0.5372549, 1)
+shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1496482131]
 environment = ExtResource("1_l1rk1")
 
-[node name="Base" type="MeshInstance3D" parent="." unique_id=96419738]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
-mesh = SubResource("BoxMesh_l1rk1")
+[node name="GameUI" parent="." unique_id=2055430224 instance=ExtResource("5_dxrkv")]
+
+[node name="floor" type="Node3D" parent="." unique_id=158222932]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="floor" parent="floor" unique_id=2022856202 instance=ExtResource("3_4fuuu")]
+
+[node name="floor2" parent="floor" unique_id=1923953801 instance=ExtResource("3_4fuuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
+
+[node name="floor3" parent="floor" unique_id=817998548 instance=ExtResource("3_4fuuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19)
+
+[node name="floor4" parent="floor" unique_id=456175767 instance=ExtResource("3_4fuuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -19)
+
+[node name="floor5" parent="floor" unique_id=1572720845 instance=ExtResource("3_4fuuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+
+[node name="floor6" parent="floor" unique_id=252600141 instance=ExtResource("3_4fuuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 20)
 
 [node name="DieSpawnPoints" type="Node3D" parent="." unique_id=1298518802]
 
 [node name="DieSpawnPoint1" type="Node3D" parent="DieSpawnPoints" unique_id=737069905]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39706373, 0.5, 2.0220761)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3929718, 0.5, 1.5673006)
+
+[node name="Marker3D" type="Marker3D" parent="DieSpawnPoints/DieSpawnPoint1" unique_id=1300686168]
 
 [node name="DieSpawnPoint2" type="Node3D" parent="DieSpawnPoints" unique_id=1807754915]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.644919, 0.5, 0.9024205)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.167273, 0.5, 0.80144405)
+
+[node name="Marker3D" type="Marker3D" parent="DieSpawnPoints/DieSpawnPoint2" unique_id=300762334]
 
 [node name="DieSpawnPoint3" type="Node3D" parent="DieSpawnPoints" unique_id=1123458489]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.96609735, 0.5, 0.063008785)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42385304, 0.5, -0.5822034)
+
+[node name="Marker3D" type="Marker3D" parent="DieSpawnPoints/DieSpawnPoint3" unique_id=1539461280]
 
 [node name="DieSpawnPoint4" type="Node3D" parent="DieSpawnPoints" unique_id=200722340]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0474758, 0.5, 0.8347206)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4623775, 0.5, -0.24676442)
+
+[node name="Marker3D" type="Marker3D" parent="DieSpawnPoints/DieSpawnPoint4" unique_id=1329647693]
 
 [node name="DieSpawnPoint5" type="Node3D" parent="DieSpawnPoints" unique_id=196692790]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0474758, 0.5, -1.778398)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8820274, 0.5, -2.6028423)
+
+[node name="Marker3D" type="Marker3D" parent="DieSpawnPoints/DieSpawnPoint5" unique_id=18935093]
 
 [node name="DieSpawnPoint6" type="Node3D" parent="DieSpawnPoints" unique_id=1443221319]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1983805, 0.5, -1.6653605)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6633239, 0.5, -2.146491)
 
-[node name="TargetedCamera" type="Camera3D" parent="." unique_id=1721703611 node_paths=PackedStringArray("target_object")]
-transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 7, 0)
-script = ExtResource("7_u5opy")
-target_object = NodePath("../Base")
-metadata/_custom_type_script = "uid://cxu02ggkwphrj"
+[node name="Marker3D" type="Marker3D" parent="DieSpawnPoints/DieSpawnPoint6" unique_id=836659170]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1260449824]
+transform = Transform3D(1.490115e-08, -0.8660254, 0.49999994, 2.5809552e-08, 0.49999988, 0.86602545, -1, -2.6645353e-15, 2.9802303e-08, 3.9724827, 5.3223534, 0)
