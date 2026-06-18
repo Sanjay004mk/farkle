@@ -2,14 +2,14 @@ extends FarkleGame
 
 class_name AnimatedFarkleGame
 
+@onready var game_ui: GameUI = $GameUI
+
 @onready var die_spawn_points: Array[Node3D] = [$DieSpawnPoints/DieSpawnPoint1, $DieSpawnPoints/DieSpawnPoint2, $DieSpawnPoints/DieSpawnPoint3, $DieSpawnPoints/DieSpawnPoint4, $DieSpawnPoints/DieSpawnPoint5, $DieSpawnPoints/DieSpawnPoint6]
 const ANIMATED_DIE = preload("uid://b21xwmel285do")
 
-var game_ui: GameUI
 var is_computer_turn: bool = false
 
-func initialize(p_game_ui: GameUI):
-	game_ui = p_game_ui
+func _ready() -> void:
 	for player in players:
 		for i in range(FarkleGame.MAX_DICE):
 			var spawn_point = die_spawn_points[i]

@@ -2,23 +2,24 @@
 
 [ext_resource type="Script" uid="uid://b8n27bckhdxo" path="res://game/game.gd" id="1_h7iqs"]
 [ext_resource type="Environment" uid="uid://gys114q4e4c8" path="res://game/game_environment.tres" id="1_l1rk1"]
-[ext_resource type="Script" uid="uid://cxu02ggkwphrj" path="res://game/targeted_camera.gd" id="7_u5opy"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_l1rk1"]
+[ext_resource type="PackedScene" uid="uid://dxtelqei8k7u8" path="res://game/model/floor.glb" id="3_4fuuu"]
+[ext_resource type="PackedScene" uid="uid://c5ibl57r04nnf" path="res://game/game_ui.tscn" id="5_dxrkv"]
 
 [node name="game" type="Node3D" unique_id=1679775102]
 script = ExtResource("1_h7iqs")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2089636971]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.8987842, 0)
-light_energy = 3.0
+light_color = Color(1, 0.8862745, 0.70980394, 1)
+light_energy = 0.5
+shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1496482131]
 environment = ExtResource("1_l1rk1")
 
-[node name="Base" type="MeshInstance3D" parent="." unique_id=96419738]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
-mesh = SubResource("BoxMesh_l1rk1")
+[node name="GameUI" parent="." unique_id=2055430224 instance=ExtResource("5_dxrkv")]
+
+[node name="floor" parent="." unique_id=371239011 instance=ExtResource("3_4fuuu")]
 
 [node name="DieSpawnPoints" type="Node3D" parent="." unique_id=1298518802]
 
@@ -40,8 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0474758, 0.5, -1.778398)
 [node name="DieSpawnPoint6" type="Node3D" parent="DieSpawnPoints" unique_id=1443221319]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1983805, 0.5, -1.6653605)
 
-[node name="TargetedCamera" type="Camera3D" parent="." unique_id=1721703611 node_paths=PackedStringArray("target_object")]
-transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 7, 0)
-script = ExtResource("7_u5opy")
-target_object = NodePath("../Base")
-metadata/_custom_type_script = "uid://cxu02ggkwphrj"
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1998628079]
+transform = Transform3D(-3.7855173e-08, -0.95000476, 0.3122355, -2.1855694e-08, 0.3122355, 0.95000476, -1, 2.913847e-08, -3.258274e-08, 5.7804523, 7.3148875, 0.1210866)
+
+[editable path="floor"]

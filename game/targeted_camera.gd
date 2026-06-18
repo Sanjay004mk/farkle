@@ -3,7 +3,7 @@ extends Camera3D
 class_name TargetedCamera
 
 @export var target_object: MeshInstance3D
-@export var fit_margin := 1.15
+@export var fit_margin := -0.15
 @export var base_fov := 70.0
 
 func _ready():
@@ -30,6 +30,5 @@ func _frame_target():
 	var forward := -global_transform.basis.z.normalized()
 	var up := Vector3.LEFT # LEFT so that the die come from the bottom (Other options FORWARD, BACK, RIGHT)
 
-	# TODO: Remove 5 when the base has been swapped with a non-scaled mesh
-	global_position = center + forward * distance * -4
+	global_position = center + forward * distance
 	look_at(center, up)

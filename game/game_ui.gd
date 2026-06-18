@@ -13,13 +13,8 @@ class_name GameUI
 ]
 @onready var game_over_label: Label = $GameOverLabel
 
-@onready var game: AnimatedFarkleGame = $ScoreAndTarget/GameViewport/SubViewportContainer/SubViewport/game
-
 var on_roll_pressed: Callable
 var on_pass_pressed: Callable
-
-func _ready() -> void:
-	game.initialize(self)
 
 func _on_roll():
 	if on_roll_pressed:
