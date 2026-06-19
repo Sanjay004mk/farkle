@@ -2,6 +2,8 @@ extends Node
 
 class_name Player
 
+var is_farkle: bool = false
+
 var dice: Array[Die] = []
 var selected_dice: Array[Die] = []
 var used_dice: Array[Die] = []
@@ -71,6 +73,7 @@ func roll() -> bool:
 		if not (used_dice.has(die) or selected_dice.has(die)):
 			die.roll(randf())
 
+	is_farkle = not FarkleRules.has_valid_selection(unused_dice)
 
 	return true
 

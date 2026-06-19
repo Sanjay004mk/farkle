@@ -11,7 +11,9 @@ class_name GameUI
 	$ScoreAndTarget/Target/Player1Score,
 	$ScoreAndTarget/Target/Player2Score
 ]
+
 @onready var game_over_label: Label = $GameOverLabel
+@onready var bust_label: Label = $BustLabel
 
 var on_roll_pressed: Callable
 var on_pass_pressed: Callable
@@ -23,6 +25,12 @@ func _on_roll():
 func _on_pass():
 	if on_pass_pressed:
 		on_pass_pressed.call()
+
+func on_turn_bust() -> Signal:
+	bust_label.show()
+	var timeout := get_tree().create_timer(0.5).timeout
+	timeout.connect(func(): bust_label.hide())
+	return timeout
 
 func on_game_over(p_player_index: int):
 	game_over_label.text = "Game Over\nPlayer %d Wins" % [p_player_index + 1]

@@ -165,10 +165,33 @@ offset_bottom = 32.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.021434637, 0.021434635, 0.021434633, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_1bhw7")
 theme_override_font_sizes/font_size = 32
 text = "Game Over
-Player 1 Wins"
+Player 1 Wins!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BustLabel" type="Label" parent="." unique_id=822654862]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -32.5
+offset_right = 103.0
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.021434637, 0.021434635, 0.021434633, 1)
+theme_override_colors/font_shadow_color = Color(0.99215686, 0.99215686, 0.99215686, 1)
+theme_override_fonts/font = ExtResource("3_1bhw7")
+theme_override_font_sizes/font_size = 32
+text = "Farkle!"
 horizontal_alignment = 1
 vertical_alignment = 1
 

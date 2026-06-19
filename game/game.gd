@@ -4,15 +4,19 @@ class_name AnimatedFarkleGame
 
 @onready var die_spawn_points: Array[Node3D] = [$DieSpawnPoints/DieSpawnPoint1, $DieSpawnPoints/DieSpawnPoint2, $DieSpawnPoints/DieSpawnPoint3, $DieSpawnPoints/DieSpawnPoint4, $DieSpawnPoints/DieSpawnPoint5, $DieSpawnPoints/DieSpawnPoint6]
 const ANIMATED_DIE = preload("uid://b21xwmel285do")
-
+@onready var die_rest_points: Array = [
+	[$DieRestPointsPlayer1/DieSpawnPoint1, $DieRestPointsPlayer1/DieSpawnPoint2, $DieRestPointsPlayer1/DieSpawnPoint3, $DieRestPointsPlayer1/DieSpawnPoint4, $DieRestPointsPlayer1/DieSpawnPoint5, $DieRestPointsPlayer1/DieSpawnPoint6],
+	[$DieRestPointsPlayer2/DieSpawnPoint1, $DieRestPointsPlayer2/DieSpawnPoint2, $DieRestPointsPlayer2/DieSpawnPoint3, $DieRestPointsPlayer2/DieSpawnPoint4, $DieRestPointsPlayer2/DieSpawnPoint5, $DieRestPointsPlayer2/DieSpawnPoint6]
+]
 @onready var game_ui: GameUI = $GameUI
 
 var is_computer_turn: bool = false
 
 func _ready() -> void:
-	for player in players:
+	for player_index in range(players.size()):
+		var player = players[player_index]
 		for i in range(FarkleGame.MAX_DICE):
-			var spawn_point = die_spawn_points[i]
+			var spawn_point = die_rest_points[player_index][i]
 			var die: AnimatedDie = ANIMATED_DIE.instantiate()
 			add_child(die)
 			die.on_selected.connect(func(_selected): game_ui.update_active_score(active_player.current_score, active_player.banked_score))
@@ -28,13 +32,14 @@ func _ready() -> void:
 	for i in range(players.size()):
 		players[i].points_updated.connect(func(total): game_ui.update_player_score(i, total))
 
-	_hide_other_player_die()
+	_move_other_player_die()
 	active_player.roll()
 	play_roll_animation()
 	_check_valid_turn()
 
 func _check_valid_turn():
-	while not FarkleRules.has_valid_selection(active_player.unused_dice):
+	while active_player.is_farkle:
+		game_ui.on_turn_bust() # TODO: await / freeze progress until this UI update finishes
 		switch_player()
 
 # TODO: UI animations
@@ -42,9 +47,17 @@ func _check_valid_turn():
 func player_roll() -> bool:
 	var ret := super()
 	if ret:
-		_check_valid_turn()
 		game_ui.update_active_score(active_player.current_score, active_player.banked_score)
-		play_roll_animation()
+
+		if not active_player.is_farkle:
+			for i in range(active_player.used_dice.size()):
+				var die: AnimatedDie = active_player.used_dice[i]
+				if die:
+					die.reappear_at(die_rest_points[active_player_index][i].global_position)
+
+			play_roll_animation()
+
+		_check_valid_turn()
 
 	return ret
 
@@ -55,12 +68,12 @@ func progress_turn() -> bool:
 
 	return ret
 
-func _hide_other_player_die():
-	for die in active_player.dice:
-		die.show()
-
-	for die in other_player.dice:
-		die.hide()
+func _move_other_player_die():
+	var other_player_index = (active_player_index + 1) % 2
+	for i in range(other_player.dice.size()):
+		var die: AnimatedDie = other_player.dice[i]
+		if die:
+			die.reappear_at(die_rest_points[other_player_index][i].global_position)
 
 func switch_player() -> void:
 	super()
@@ -68,10 +81,12 @@ func switch_player() -> void:
 		if die is AnimatedDie:
 			die.toggle_select(false)
 
-	_hide_other_player_die()
+	_move_other_player_die()
 	game_ui.update_active_score(active_player.current_score, active_player.banked_score)
 
 	if not is_game_over:
+		# TODO: wait for animation in a better way
+		await get_tree().create_timer(1.0).timeout
 		play_roll_animation()
 
 		if active_player is ComputerPlayer and FarkleRules.has_valid_selection(active_player.unused_dice):
@@ -82,9 +97,12 @@ func on_computer_turn_complete():
 	is_computer_turn = false
 
 func play_roll_animation():
-	for die in active_player.unused_dice:
+	for i in range(active_player.unused_dice.size()):
+		var die = active_player.unused_dice[i]
+		var spawn_point = die_spawn_points[i].global_position
+		spawn_point = Vector3(spawn_point.x + randf_range(-0.3, 0.3), spawn_point.y, spawn_point.z + randf_range(-0.3, 0.3))
 		if die is AnimatedDie:
-			die.animate_roll()
+			die.animate_roll(spawn_point)
 
 func toggle_select_die(p_player: Player, p_die: Die):
 	var ret = p_player.toggle_select_die(p_die)
