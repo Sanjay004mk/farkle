@@ -19,7 +19,8 @@ func play_turn(p_on_turn_complete: Callable):
 		if game.active_player != self or not FarkleRules.has_valid_selection(unused_dice):
 			break
 
-		await get_tree().create_timer(2.0).timeout
+		# Delay to simulate thinking
+		await get_tree().create_timer(1.0).timeout
 
 		var possible_selections = FarkleRules.get_all_valid_selections(unused_dice)
 		var scored_selections = []
@@ -34,15 +35,18 @@ func play_turn(p_on_turn_complete: Callable):
 
 		for die in selection_to_play[0]:
 			animated_game.toggle_select_die(self, die)
+			# delay between selection
 			await get_tree().create_timer(0.7).timeout
 
+		# delay before scoring
+		# TODO: Add some animation to indicate what happened (Roll/Pass)
 		await get_tree().create_timer(1.0).timeout
 
 
 		if selection_to_play.back()[1]:
-			animated_game.player_roll()
+			await animated_game.player_roll()
 		else:
-			animated_game.progress_turn()
+			await animated_game.progress_turn()
 			break
 
 	p_on_turn_complete.call()

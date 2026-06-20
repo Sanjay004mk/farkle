@@ -182,6 +182,7 @@ mesh = SubResource("ArrayMesh_3y1o2")
 
 [node name="animated_die_object" type="Node3D" parent="." unique_id=1421052351]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="animated_die_object" unique_id=422396522]
 libraries/ = SubResource("AnimationLibrary_5f7uu")

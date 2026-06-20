@@ -12,35 +12,37 @@ const ANIMATED_DIE = preload("uid://b21xwmel285do")
 
 var is_computer_turn: bool = false
 
+signal all_dice_rolled
+signal all_dice_moved
+
 func _ready() -> void:
 	for player_index in range(players.size()):
 		var player = players[player_index]
 		for i in range(FarkleGame.MAX_DICE):
-			var spawn_point = die_rest_points[player_index][i]
 			var die: AnimatedDie = ANIMATED_DIE.instantiate()
 			add_child(die)
 			die.on_selected.connect(func(_selected): game_ui.update_active_score(active_player.current_score, active_player.banked_score))
-			die.position = spawn_point.position
+			die.position = Vector3.ZERO
 			player.assign_die(die, i)
 			die.set_on_die_clicked_callback(func(): if not is_computer_turn: toggle_select(player, i))
 
 	game_over.connect(game_ui.on_game_over)
-	game_ui.on_roll_pressed = func(): if not is_computer_turn: player_roll()
-	game_ui.on_pass_pressed = func(): if not is_computer_turn: progress_turn()
+	game_ui.on_roll_pressed = func(): if not (is_computer_turn or is_game_over): player_roll()
+	game_ui.on_pass_pressed = func(): if not (is_computer_turn or is_game_over): progress_turn()
 	game_ui.set_target_score(FarkleGameState.target_score)
 	player_switched.connect(func(): game_ui.update_player_turn(active_player_index))
 	for i in range(players.size()):
 		players[i].points_updated.connect(func(total): game_ui.update_player_score(i, total))
 
-	_move_other_player_die()
+	await _move_other_player_die()
 	active_player.roll()
-	play_roll_animation()
-	_check_valid_turn()
+	await play_roll_animation()
+	await _check_valid_turn()
 
 func _check_valid_turn():
 	while active_player.is_farkle:
-		game_ui.on_turn_bust() # TODO: await / freeze progress until this UI update finishes
-		switch_player()
+		await game_ui.on_turn_bust()
+		await switch_player()
 
 # TODO: UI animations
 
@@ -49,31 +51,47 @@ func player_roll() -> bool:
 	if ret:
 		game_ui.update_active_score(active_player.current_score, active_player.banked_score)
 
-		if not active_player.is_farkle:
+		if active_player.used_dice.size() > 0:
+			var positions = []
 			for i in range(active_player.used_dice.size()):
-				var die: AnimatedDie = active_player.used_dice[i]
-				if die:
-					die.reappear_at(die_rest_points[active_player_index][i].global_position)
+				positions.append(die_rest_points[active_player_index][i].global_position)
+			await _move_dice_async(active_player.used_dice, positions)
 
-			play_roll_animation()
-
-		_check_valid_turn()
+		await play_roll_animation()
+		await _check_valid_turn()
 
 	return ret
 
 func progress_turn() -> bool:
 	var ret := super()
 	if ret:
-		_check_valid_turn()
+		await _check_valid_turn()
 
 	return ret
 
+func _move_dice_async(p_dice: Array, p_position: Array):
+	assert(p_dice.size() == p_position.size())
+	var reappear_count = {"count": 0}
+	var finised_count = p_dice.size()
+	for i in range(p_dice.size()):
+		var die: AnimatedDie = p_dice[i]
+		assert(die)
+		die.reappear_at(p_position[i])
+		die.reappear_animation_finished.connect(
+			func(): 
+				reappear_count.count += 1
+				if reappear_count.count == finised_count:
+					all_dice_moved.emit()
+		, CONNECT_ONE_SHOT)
+
+	await all_dice_moved
+
 func _move_other_player_die():
+	var positions = []
 	var other_player_index = (active_player_index + 1) % 2
 	for i in range(other_player.dice.size()):
-		var die: AnimatedDie = other_player.dice[i]
-		if die:
-			die.reappear_at(die_rest_points[other_player_index][i].global_position)
+		positions.append(die_rest_points[other_player_index][i].global_position)
+	await _move_dice_async(other_player.dice, positions)
 
 func switch_player() -> void:
 	super()
@@ -81,13 +99,11 @@ func switch_player() -> void:
 		if die is AnimatedDie:
 			die.toggle_select(false)
 
-	_move_other_player_die()
+	await _move_other_player_die()
 	game_ui.update_active_score(active_player.current_score, active_player.banked_score)
 
 	if not is_game_over:
-		# TODO: wait for animation in a better way
-		await get_tree().create_timer(1.0).timeout
-		play_roll_animation()
+		await play_roll_animation()
 
 		if active_player is ComputerPlayer and FarkleRules.has_valid_selection(active_player.unused_dice):
 			is_computer_turn = true
@@ -97,14 +113,27 @@ func on_computer_turn_complete():
 	is_computer_turn = false
 
 func play_roll_animation():
+	var spawn_points = die_spawn_points.duplicate()
+	spawn_points.shuffle()
+	var roll_count = {"count": 0}
+	var finised_count = active_player.unused_dice.size()
 	for i in range(active_player.unused_dice.size()):
 		var die = active_player.unused_dice[i]
-		var spawn_point = die_spawn_points[i].global_position
+		var spawn_point = spawn_points[i].global_position
 		spawn_point = Vector3(spawn_point.x + randf_range(-0.3, 0.3), spawn_point.y, spawn_point.z + randf_range(-0.3, 0.3))
 		if die is AnimatedDie:
 			die.animate_roll(spawn_point)
+			die.roll_animation_finished.connect(
+				func():
+					roll_count.count += 1
+					if roll_count.count == finised_count:
+						all_dice_rolled.emit()
+			, CONNECT_ONE_SHOT)
+
+	await all_dice_rolled
 
 func toggle_select_die(p_player: Player, p_die: Die):
+	if is_game_over: return
 	var ret = p_player.toggle_select_die(p_die)
 	if not p_die:
 		return

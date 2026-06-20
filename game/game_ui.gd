@@ -26,11 +26,11 @@ func _on_pass():
 	if on_pass_pressed:
 		on_pass_pressed.call()
 
-func on_turn_bust() -> Signal:
+func on_turn_bust():
 	bust_label.show()
-	var timeout := get_tree().create_timer(0.5).timeout
+	var timeout := get_tree().create_timer(1.5).timeout
 	timeout.connect(func(): bust_label.hide())
-	return timeout
+	await timeout
 
 func on_game_over(p_player_index: int):
 	game_over_label.text = "Game Over\nPlayer %d Wins" % [p_player_index + 1]
@@ -43,6 +43,7 @@ func update_active_score(p_current_score: int, p_banked_score: int):
 	current_score.text = str(p_current_score)
 	banked_score.text = str(p_banked_score)
 
+# TODO: Animations
 func update_player_turn(p_player_index: int):
 	turn_label.text = "Player %d's turn" % [p_player_index + 1]
 

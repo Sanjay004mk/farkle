@@ -72,74 +72,74 @@ mesh = SubResource("BoxMesh_i4sdr")
 [node name="DieRestPointsPlayer1" type="Node3D" parent="." unique_id=1585952389]
 
 [node name="DieSpawnPoint1" type="Node3D" parent="DieRestPointsPlayer1" unique_id=637019498]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.033511, 0.5, 4.7538724)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0335109, 0.5, 4.7538724)
 
 [node name="Marker3D" type="Marker3D" parent="DieRestPointsPlayer1/DieSpawnPoint1" unique_id=1067275996]
 
 [node name="DieSpawnPoint2" type="Node3D" parent="DieRestPointsPlayer1" unique_id=1289542051]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9241645, 0.49999976, 4.714964)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07583547, 0.49999976, 4.714964)
 
 [node name="Marker3D" type="Marker3D" parent="DieRestPointsPlayer1/DieSpawnPoint2" unique_id=1909358333]
 
 [node name="DieSpawnPoint3" type="Node3D" parent="DieRestPointsPlayer1" unique_id=710413205]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8225405, 0.5, 4.702919)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1774595, 0.5, 4.702919)
 
 [node name="Marker3D" type="Marker3D" parent="DieRestPointsPlayer1/DieSpawnPoint3" unique_id=1714279523]
 
 [node name="DieSpawnPoint4" type="Node3D" parent="DieRestPointsPlayer1" unique_id=1883853013]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23049617, 0.5, 4.693783)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2304962, 0.5, 4.693783)
 
 [node name="Marker3D" type="Marker3D" parent="DieRestPointsPlayer1/DieSpawnPoint4" unique_id=666014826]
 
 [node name="DieSpawnPoint5" type="Node3D" parent="DieRestPointsPlayer1" unique_id=395300298]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2500116, 0.5, 4.7959595)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2500114, 0.5, 4.7959595)
 
 [node name="Marker3D" type="Marker3D" parent="DieRestPointsPlayer1/DieSpawnPoint5" unique_id=242578025]
 
 [node name="DieSpawnPoint6" type="Node3D" parent="DieRestPointsPlayer1" unique_id=2041079932]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.090818, 0.5, 4.7079616)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.090818, 0.5, 4.7079616)
 
 [node name="Marker3D" type="Marker3D" parent="DieRestPointsPlayer1/DieSpawnPoint6" unique_id=1293579618]
 
 [node name="DieSpawnArea" type="MeshInstance3D" parent="DieRestPointsPlayer1" unique_id=1093088389]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47937012, 0, 4.7392244)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5206299, 0, 4.7392244)
 visible = false
 mesh = SubResource("BoxMesh_4fuuu")
 
 [node name="DieRestPointsPlayer2" type="Node3D" parent="." unique_id=1167181730]
 
 [node name="DieSpawnPoint1" type="Node3D" parent="DieRestPointsPlayer2" unique_id=1743262698]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.033511, 0.5, -4.9789095)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0335109, 0.5, -4.9789095)
 
 [node name="Marker3D" type="Marker3D" parent="DieRestPointsPlayer2/DieSpawnPoint1" unique_id=1984842999]
 
 [node name="DieSpawnPoint2" type="Node3D" parent="DieRestPointsPlayer2" unique_id=1327422838]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9241645, 0.49999976, -5.0178175)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07583547, 0.49999976, -5.0178175)
 
 [node name="Marker3D" type="Marker3D" parent="DieRestPointsPlayer2/DieSpawnPoint2" unique_id=1272852168]
 
 [node name="DieSpawnPoint3" type="Node3D" parent="DieRestPointsPlayer2" unique_id=1908073517]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8225405, 0.5, -5.029863)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1774595, 0.5, -5.029863)
 
 [node name="Marker3D" type="Marker3D" parent="DieRestPointsPlayer2/DieSpawnPoint3" unique_id=1257344808]
 
 [node name="DieSpawnPoint4" type="Node3D" parent="DieRestPointsPlayer2" unique_id=821596819]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23049617, 0.5, -5.038999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2304962, 0.5, -5.038999)
 
 [node name="Marker3D" type="Marker3D" parent="DieRestPointsPlayer2/DieSpawnPoint4" unique_id=1593041424]
 
 [node name="DieSpawnPoint5" type="Node3D" parent="DieRestPointsPlayer2" unique_id=1994547882]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2500116, 0.5, -4.936822)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2500114, 0.5, -4.936822)
 
 [node name="Marker3D" type="Marker3D" parent="DieRestPointsPlayer2/DieSpawnPoint5" unique_id=806121268]
 
 [node name="DieSpawnPoint6" type="Node3D" parent="DieRestPointsPlayer2" unique_id=1289478021]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.090818, 0.5, -5.0248203)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.090818, 0.5, -5.0248203)
 
 [node name="Marker3D" type="Marker3D" parent="DieRestPointsPlayer2/DieSpawnPoint6" unique_id=2117071731]
 
 [node name="DieSpawnArea" type="MeshInstance3D" parent="DieRestPointsPlayer2" unique_id=2139084550]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47937012, 0, -4.9935575)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5206299, 0, -4.9935575)
 visible = false
 mesh = SubResource("BoxMesh_4fuuu")
 

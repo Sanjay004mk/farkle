@@ -27,21 +27,26 @@ const _PER_CURVE_ROTATION_DATA: Array = [
 	[5, 2, 1, 0, 3, 4],
 	[4, 0, 3, 2, 1, 5],
 	[4, 0, 3, 2, 1, 5],
-	[0, 4, 1, 5, 3, 2] # For IdleMesh
+	[5, 2, 1, 0, 3, 4], # For IdleMesh
 ]
 
 var _on_die_clicked_callback: Callable
-var _roll_tween: Tween
+var _audio_tween: Tween
 var _selection_tween: Tween
 var _reappear_tween: Tween
+
+signal roll_animation_finished
+signal reappear_animation_finished
 
 func set_on_die_clicked_callback(p_callback: Callable):
 	if _on_die_clicked_callback and dice_click_handle.input_event.is_connected(_on_die_clicked_callback):
 		dice_click_handle.input_event.disconnect(_on_die_clicked_callback)
 
-	_on_die_clicked_callback = func(_camera, event, _position, _normal, _shape_idx):  
-			if event is InputEventMouseButton and event.pressed == true and event.button_index == MOUSE_BUTTON_LEFT and not _roll_tween.is_running(): 
-				p_callback.call()
+	_on_die_clicked_callback = (
+	func(_camera, event, _position, _normal, _shape_idx):  
+		if event is InputEventMouseButton and event.pressed == true and event.button_index == MOUSE_BUTTON_LEFT and not _audio_tween.is_running(): 
+			p_callback.call()
+	)
 
 	dice_click_handle.input_event.connect(_on_die_clicked_callback)
 
@@ -69,11 +74,12 @@ func reappear_at(p_global_position: Vector3) -> void:
 	_reappear_tween = get_tree().create_tween()
 	_reappear_tween.tween_property(dice_rotation_handle, "scale", Vector3.ZERO, 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
 	_reappear_tween.tween_callback(func(): 
-		dice_movement_handle.hide()
 		dice_rotation_handle.scale = Vector3(1.0, 1.0, 1.0)
 		dice_animation_player.stop() # Stop resets the position of the die
+		dice_movement_handle.hide()
 	)
 	_reappear_tween.tween_property(idle_mesh, "scale", Vector3(1.0, 1.0, 1.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+	_reappear_tween.finished.connect(func(): reappear_animation_finished.emit())
 
 func hide_idle_mesh() -> void:
 	if _reappear_tween:
@@ -81,23 +87,32 @@ func hide_idle_mesh() -> void:
 
 	_reappear_tween = get_tree().create_tween()
 	_reappear_tween.tween_property(idle_mesh, "scale", Vector3.ZERO, 0.2).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+	await _reappear_tween.finished
+
+func _kill_all_tweens():
+	if _reappear_tween:
+		_reappear_tween.kill()
+	if _audio_tween:
+		_audio_tween.kill()
+	if _selection_tween:
+		_selection_tween.kill()
 
 func animate_roll(p_start_position: Vector3) -> void:
-	dice_movement_handle.global_position = p_start_position
+	_kill_all_tweens()
+	await hide_idle_mesh()
 	dice_rotation_handle.scale = Vector3(1.0, 1.0, 1.0)
 	dice_animation_player.stop() # Stop resets the position of the die
+	dice_movement_handle.global_position = p_start_position
 	dice_movement_handle.show()
-	hide_idle_mesh()
 
 	var animation_index: int = randi_range(1, 6)
 	_orient_die(animation_index)
 
-	if _roll_tween:
-		_roll_tween.kill()
-	_roll_tween = create_tween().set_parallel(true)
+	_audio_tween = create_tween().set_parallel(true)
 
 	var rand_delay := randf() * 0.5
-	_roll_tween.tween_callback(func(): audio_stream_player_3d.play()).set_delay(1.0 + rand_delay)
+	_audio_tween.tween_callback(func(): audio_stream_player_3d.play()).set_delay(1.0 + rand_delay)
+	_audio_tween.finished.connect(func(): roll_animation_finished.emit())
 	dice_animation_player.play("Roll_00" + str(animation_index), -1, 1.0 + rand_delay)
 
 func toggle_select(p_selected: bool):
