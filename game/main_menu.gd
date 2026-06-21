@@ -2,26 +2,90 @@ extends Control
 
 class_name MainMenu
 
-@onready var game_difficulty_selector_margin: MarginContainer = $TitleAndMainMenuMargin/HBoxContainer/GameDifficultySelectorMargin
-@onready var difficulty_options: VBoxContainer = $TitleAndMainMenuMargin/HBoxContainer/GameDifficultySelectorMargin/GameDifficultySelector/VBoxContainer/DifficultyOptions
+@onready var back_button: LinkButton = $TitleAndMenu/TitleAndMainMenu/Title/BackButton
 
+@onready var menus: Dictionary = {
+	"main": $TitleAndMenu/TitleAndMainMenu/MainMenu,
+	"difficulty": $TitleAndMenu/TitleAndMainMenu/DifficultyMenu,
+	"rules": $TitleAndMenu/TitleAndMainMenu/RulesMenu
+}
 const _DIFFICULTY_OPTIONS: Array[int] = [1500, 2000, 4000, 5000, 6000, 8000]
+@onready var difficulty_buttons: Array[LinkButton] = [
+	$TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton/MarginContainer/LinkButton, $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton2/MarginContainer/LinkButton, $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton3/MarginContainer/LinkButton, $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton4/MarginContainer/LinkButton, $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton5/MarginContainer/LinkButton, $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton6/MarginContainer/LinkButton
+]
+
+@onready var mode_buttons: Dictionary = {
+	"player": {
+		"enum": FarkleGameState.VsMode.VS_Player,
+		"visual": $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer/HBoxContainer/MainMenuButton, 
+		"button": $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer/HBoxContainer/MainMenuButton/MarginContainer/LinkButton, 
+	},
+	"computer": {
+		"enum": FarkleGameState.VsMode.VS_Computer,
+		"visual": $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer/HBoxContainer/MainMenuButton2,
+		"button": $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer/HBoxContainer/MainMenuButton2/MarginContainer/LinkButton
+	}
+}
+func _ready() -> void:
+	back_button.mouse_entered.connect(func(): back_button.modulate = Color.GRAY)
+	back_button.mouse_exited.connect(func(): back_button.modulate = Color.WHITE)
+	back_button.pressed.connect(func(): _show_menu("main"))
+	back_button.hide()
+
+	for mode in mode_buttons:
+		var btn = mode_buttons[mode]
+		btn.button.pressed.connect(func(val = btn.enum): 
+			FarkleGameState.vs_mode = val
+			_update_mode_visual_state()
+		)
+	_update_mode_visual_state()
+
+	for i in range(_DIFFICULTY_OPTIONS.size()):
+		var btn := difficulty_buttons[i]
+		btn.pressed.connect(func(): _start_level(_DIFFICULTY_OPTIONS[i]))
+
+	_show_menu("main")
+
+func _update_mode_visual_state():
+	for mode in mode_buttons:
+		var btn = mode_buttons[mode]
+		if FarkleGameState.vs_mode == btn.enum:
+			btn.visual.modulate = Color.WHITE
+		else:
+			btn.visual.modulate = Color.DARK_SLATE_GRAY
+
+func _start_level(p_difficulty: int):
+	FarkleGameState.target_score = p_difficulty
+	get_tree().change_scene_to_file("res://game/game.tscn")
+
+func _show_menu(p_menu: String):
+	for menu_name in menus:
+		if menu_name == p_menu:
+			menus[menu_name].show()
+		else:
+			menus[menu_name].hide()
+
+	back_button.visible = p_menu != "main"
 
 func on_start_pressed() -> void:
-	game_difficulty_selector_margin.show()
-	for child in difficulty_options.get_children():
-		child.queue_free()
+	_show_menu("difficulty")
+	#game_difficulty_selector_margin.show()
+	#for child in difficulty_options.get_children():
+		#child.queue_free()
+#
+	#for option in _DIFFICULTY_OPTIONS:
+		#var button: Button = Button.new()
+		#button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		#button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		#button.text = "%d Points" % option
+		#button.pressed.connect(func(): 
+			#FarkleGameState.target_score = option
+			#get_tree().change_scene_to_file("res://game/game.tscn")
+		#)
+		#difficulty_options.add_child(button)
 
-	for option in _DIFFICULTY_OPTIONS:
-		var button: Button = Button.new()
-		button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-		button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		button.text = "%d Points" % option
-		button.pressed.connect(func(): 
-			FarkleGameState.target_score = option
-			get_tree().change_scene_to_file("res://game/game.tscn")
-		)
-		difficulty_options.add_child(button)
+func on_rules_pressed() -> void:
+	_show_menu("rules")
 
 func on_quit_pressed() -> void:
 	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)

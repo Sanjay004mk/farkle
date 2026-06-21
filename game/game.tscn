@@ -19,8 +19,8 @@ script = ExtResource("1_h7iqs")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2089636971]
 transform = Transform3D(0.49999997, 3.7855173e-08, -0.86602545, 0.86602545, -2.1855692e-08, 0.49999997, 0, -1, -4.371139e-08, 0, 3.8987842, 0)
-light_color = Color(0.921865, 0.77578217, 0.5930499, 1)
-light_energy = 0.6
+light_color = Color(0.7658442, 0.8208432, 0.7813057, 1)
+light_energy = 0.05
 shadow_enabled = true
 shadow_blur = 8.0
 

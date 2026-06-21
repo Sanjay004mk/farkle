@@ -4,4 +4,4 @@
 
 [resource]
 shader = ExtResource("1_oubmo")
-shader_parameter/lod = 2.50000011875
+shader_parameter/lod = 1.01600004826

@@ -20,5 +20,5 @@ shader_parameter/pace = -9.999996334304797
 shader_parameter/gap = 200.00000298024
 shader_parameter/size = 150.0000021755752
 shader_parameter/angle = 60.00000357628801
-shader_parameter/background_start = Color(0.5, 0.6, 0.2, 1)
-shader_parameter/background_end = Color(0.8, 0.9, 0.5, 1)
+shader_parameter/background_start = Color(0.043137256, 0.03137255, 0.101960786, 1)
+shader_parameter/background_end = Color(0, 0, 0, 1)
