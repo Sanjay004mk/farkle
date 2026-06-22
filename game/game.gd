@@ -30,6 +30,7 @@ func _ready() -> void:
 	game_ui.on_roll_pressed = func(): if not (is_computer_turn or is_game_over): player_roll()
 	game_ui.on_pass_pressed = func(): if not (is_computer_turn or is_game_over): progress_turn()
 	game_ui.set_target_score(FarkleGameState.target_score)
+	game_ui.update_player_turn(active_player_index)
 	player_switched.connect(func(): game_ui.update_player_turn(active_player_index))
 	for i in range(players.size()):
 		players[i].points_updated.connect(func(total): game_ui.update_player_score(i, total))

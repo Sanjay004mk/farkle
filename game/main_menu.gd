@@ -11,18 +11,18 @@ class_name MainMenu
 }
 const _DIFFICULTY_OPTIONS: Array[int] = [1500, 2000, 4000, 5000, 6000, 8000]
 @onready var difficulty_buttons: Array[LinkButton] = [
-	$TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton/MarginContainer/LinkButton, $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton2/MarginContainer/LinkButton, $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton3/MarginContainer/LinkButton, $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton4/MarginContainer/LinkButton, $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton5/MarginContainer/LinkButton, $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton6/MarginContainer/LinkButton
+	$TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer/MainMenuButton/MarginContainer/LinkButton, $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer/MainMenuButton2/MarginContainer/LinkButton, $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer/MainMenuButton3/MarginContainer/LinkButton, $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer2/MainMenuButton4/MarginContainer/LinkButton, $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer2/MainMenuButton5/MarginContainer/LinkButton, $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer2/MainMenuButton6/MarginContainer/LinkButton
 ]
 
 @onready var mode_buttons: Dictionary = {
 	"player": {
 		"enum": FarkleGameState.VsMode.VS_Player,
-		"visual": $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer/HBoxContainer/MainMenuButton, 
+		"visual": $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer/HBoxContainer/MainMenuButton/MarginContainer/LinkButton/DisablePanel, 
 		"button": $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer/HBoxContainer/MainMenuButton/MarginContainer/LinkButton, 
 	},
 	"computer": {
 		"enum": FarkleGameState.VsMode.VS_Computer,
-		"visual": $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer/HBoxContainer/MainMenuButton2,
+		"visual": $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer/HBoxContainer/MainMenuButton2/MarginContainer/LinkButton/DisablePanel,
 		"button": $TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer/HBoxContainer/MainMenuButton2/MarginContainer/LinkButton
 	}
 }
@@ -50,9 +50,9 @@ func _update_mode_visual_state():
 	for mode in mode_buttons:
 		var btn = mode_buttons[mode]
 		if FarkleGameState.vs_mode == btn.enum:
-			btn.visual.modulate = Color.WHITE
+			btn.visual.hide()
 		else:
-			btn.visual.modulate = Color.DARK_SLATE_GRAY
+			btn.visual.show()
 
 func _start_level(p_difficulty: int):
 	FarkleGameState.target_score = p_difficulty
@@ -69,20 +69,6 @@ func _show_menu(p_menu: String):
 
 func on_start_pressed() -> void:
 	_show_menu("difficulty")
-	#game_difficulty_selector_margin.show()
-	#for child in difficulty_options.get_children():
-		#child.queue_free()
-#
-	#for option in _DIFFICULTY_OPTIONS:
-		#var button: Button = Button.new()
-		#button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-		#button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		#button.text = "%d Points" % option
-		#button.pressed.connect(func(): 
-			#FarkleGameState.target_score = option
-			#get_tree().change_scene_to_file("res://game/game.tscn")
-		#)
-		#difficulty_options.add_child(button)
 
 func on_rules_pressed() -> void:
 	_show_menu("rules")

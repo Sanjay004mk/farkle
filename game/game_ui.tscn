@@ -1,12 +1,122 @@
 [gd_scene format=3 uid="uid://c5ibl57r04nnf"]
 
 [ext_resource type="Script" uid="uid://wh3ylu0dara" path="res://game/game_ui.gd" id="1_sxc2a"]
-[ext_resource type="FontFile" uid="uid://3uoikeru431t" path="res://font/SuperPencil-ARGw7.ttf" id="1_xnou0"]
-[ext_resource type="FontFile" uid="uid://vbaf4g4r61wy" path="res://font/VeryVeryPunkFont-ZpZ0K.ttf" id="3_1bhw7"]
-[ext_resource type="FontFile" uid="uid://bmp11sjtl51c1" path="res://font/SuperNormal-xRoj5.ttf" id="4_6qftt"]
+[ext_resource type="FontFile" uid="uid://jskohweoem0q" path="res://font/Nougat-ExtraBlack.ttf" id="2_sxc2a"]
+[ext_resource type="FontFile" uid="uid://bly3xf8f43rdd" path="res://font/LilitaOne-Regular.ttf" id="8_b3gjf"]
 [ext_resource type="PackedScene" uid="uid://buwcj4c3j0vdh" path="res://ui/main_menu_button.tscn" id="8_io52l"]
-[ext_resource type="FontFile" uid="uid://dyhbmghi7i3tg" path="res://font/PolandCannedIntoKaito-j9OjM.ttf" id="9_b3gjf"]
 [ext_resource type="AudioStream" uid="uid://p5pgi6kfwe4c" path="res://sounds/bgm1.wav" id="10_1x2ml"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qftt"]
+bg_color = Color(0.13333334, 0.10980392, 0.2509804, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.08627451, 0.07058824, 0.1764706, 1)
+corner_radius_top_left = 21
+corner_radius_bottom_left = 21
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_io52l"]
+bg_color = Color(0.016924448, 0.01251815, 0.05440259, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.08627451, 0.07058824, 0.1764706, 1)
+corner_radius_top_left = 21
+corner_radius_bottom_left = 21
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3gjf"]
+bg_color = Color(0.075316675, 0.058924712, 0.15698004, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.08627451, 0.07058824, 0.1764706, 1)
+corner_radius_top_left = 21
+corner_radius_bottom_left = 21
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1x2ml"]
+bg_color = Color(0.13333334, 0.10980392, 0.2509804, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.08627451, 0.07058824, 0.1764706, 1)
+corner_radius_top_right = 21
+corner_radius_bottom_right = 21
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71hio"]
+bg_color = Color(0.016924448, 0.01251815, 0.05440259, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.08627451, 0.07058824, 0.1764706, 1)
+corner_radius_top_right = 21
+corner_radius_bottom_right = 21
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6ynk"]
+bg_color = Color(0.075316675, 0.058924712, 0.15698004, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.08627451, 0.07058824, 0.1764706, 1)
+corner_radius_top_right = 21
+corner_radius_bottom_right = 21
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bhw7"]
+bg_color = Color(0.043137256, 0.03137255, 0.101960786, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.21960784, 0.7411765, 0.972549, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dt53"]
+bg_color = Color(0.043137256, 0.03137255, 0.101960786, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.21960784, 0.7411765, 0.972549, 1)
+corner_radius_top_left = 37
+corner_radius_top_right = 37
+corner_radius_bottom_right = 37
+corner_radius_bottom_left = 37
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wr6kv"]
+bg_color = Color(0.13333334, 0.10980392, 0.2509804, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6xmkl"]
+bg_color = Color(0.08627451, 0.07058824, 0.1764706, 1)
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6au4"]
+bg_color = Color(0.36862746, 0.2627451, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.21960784, 0.7411765, 0.972549, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxc2a"]
+bg_color = Color(0.95686275, 0.24705882, 0.36862746, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9843137, 0.7490196, 0.14117648, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
 
 [node name="GameUI" type="Control" unique_id=2055430224]
 layout_mode = 3
@@ -17,161 +127,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_sxc2a")
-
-[node name="ScoreAndTarget" type="HBoxContainer" parent="." unique_id=1421155772]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Target" type="VBoxContainer" parent="ScoreAndTarget" unique_id=592826900]
-layout_mode = 2
-alignment = 1
-
-[node name="TargetScore" type="Label" parent="ScoreAndTarget/Target" unique_id=1114042245]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
-theme_override_fonts/font = ExtResource("1_xnou0")
-theme_override_font_sizes/font_size = 24
-text = "Target: 0000"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Spacer" type="Control" parent="ScoreAndTarget/Target" unique_id=1894512936]
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-
-[node name="Player1ScoreLabel" type="Label" parent="ScoreAndTarget/Target" unique_id=572084658]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
-theme_override_fonts/font = ExtResource("4_6qftt")
-theme_override_font_sizes/font_size = 24
-text = "Player 1 Score:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player1Score" type="Label" parent="ScoreAndTarget/Target" unique_id=2082437091]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
-theme_override_fonts/font = ExtResource("4_6qftt")
-theme_override_font_sizes/font_size = 24
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Spacer2" type="Control" parent="ScoreAndTarget/Target" unique_id=768689777]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-
-[node name="Player2ScoreLabel" type="Label" parent="ScoreAndTarget/Target" unique_id=155756139]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
-theme_override_fonts/font = ExtResource("4_6qftt")
-theme_override_font_sizes/font_size = 24
-text = "Player 2 Score:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player2Score" type="Label" parent="ScoreAndTarget/Target" unique_id=144449445]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
-theme_override_fonts/font = ExtResource("4_6qftt")
-theme_override_font_sizes/font_size = 24
-text = " 0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Spacer" type="Control" parent="ScoreAndTarget" unique_id=1357701538]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 1
-
-[node name="Score" type="VBoxContainer" parent="ScoreAndTarget" unique_id=1024760929]
-layout_mode = 2
-alignment = 1
-
-[node name="TurnLabel" type="Label" parent="ScoreAndTarget/Score" unique_id=2085020854]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
-theme_override_fonts/font = ExtResource("1_xnou0")
-theme_override_font_sizes/font_size = 24
-text = "Player 1's turn"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Spacer" type="Control" parent="ScoreAndTarget/Score" unique_id=431118785]
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-
-[node name="CurrentScoreLabel" type="Label" parent="ScoreAndTarget/Score" unique_id=336618946]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
-theme_override_fonts/font = ExtResource("4_6qftt")
-theme_override_font_sizes/font_size = 24
-text = "Current Score:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CurrentScore" type="Label" parent="ScoreAndTarget/Score" unique_id=1968023700]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
-theme_override_fonts/font = ExtResource("4_6qftt")
-theme_override_font_sizes/font_size = 24
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Spacer2" type="Control" parent="ScoreAndTarget/Score" unique_id=632140461]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-
-[node name="BankedScoreLabel" type="Label" parent="ScoreAndTarget/Score" unique_id=1867409502]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
-theme_override_fonts/font = ExtResource("4_6qftt")
-theme_override_font_sizes/font_size = 24
-text = "Banked Score:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BankedScore" type="Label" parent="ScoreAndTarget/Score" unique_id=311195679]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0.047058824, 0.047058824, 0.047058824, 0.96862745)
-theme_override_fonts/font = ExtResource("4_6qftt")
-theme_override_font_sizes/font_size = 24
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="GameOverLabel" type="Label" parent="." unique_id=1493203388]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -103.0
-offset_top = -32.5
-offset_right = 103.0
-offset_bottom = 32.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.021434637, 0.021434635, 0.021434633, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_1bhw7")
-theme_override_font_sizes/font_size = 32
-text = "Game Over
-Player 1 Wins!!"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="BustLabel" type="Label" parent="." unique_id=822654862]
 visible = false
@@ -189,64 +144,389 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.021434637, 0.021434635, 0.021434633, 1)
 theme_override_colors/font_shadow_color = Color(0.99215686, 0.99215686, 0.99215686, 1)
-theme_override_fonts/font = ExtResource("3_1bhw7")
+theme_override_fonts/font = ExtResource("2_sxc2a")
 theme_override_font_sizes/font_size = 32
-text = "Farkle!"
+text = "Bust!"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Buttons" type="HBoxContainer" parent="." unique_id=2101859298]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -42.0
-offset_top = -40.0
-offset_right = 42.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Roll" parent="Buttons" unique_id=1023268900 instance=ExtResource("8_io52l")]
-layout_mode = 2
-
-[node name="AnimatedLabel" parent="Buttons/Roll/MarginContainer" parent_id_path=PackedInt32Array(1023268900, 453075192) index="0" unique_id=1132354834]
-theme_override_fonts/normal_font = ExtResource("9_b3gjf")
-theme_override_fonts/bold_font = ExtResource("9_b3gjf")
-theme_override_fonts/bold_italics_font = ExtResource("9_b3gjf")
-theme_override_fonts/italics_font = ExtResource("9_b3gjf")
-theme_override_fonts/mono_font = ExtResource("9_b3gjf")
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
-theme_override_font_sizes/bold_italics_font_size = 20
-theme_override_font_sizes/italics_font_size = 20
-theme_override_font_sizes/mono_font_size = 20
-text = "Roll"
-
-[node name="Pass" parent="Buttons" unique_id=799810781 instance=ExtResource("8_io52l")]
-layout_mode = 2
-
-[node name="AnimatedLabel" parent="Buttons/Pass/MarginContainer" parent_id_path=PackedInt32Array(799810781, 453075192) index="0" unique_id=1132354834]
-theme_override_fonts/normal_font = ExtResource("9_b3gjf")
-theme_override_fonts/bold_font = ExtResource("9_b3gjf")
-theme_override_fonts/bold_italics_font = ExtResource("9_b3gjf")
-theme_override_fonts/italics_font = ExtResource("9_b3gjf")
-theme_override_fonts/mono_font = ExtResource("9_b3gjf")
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
-theme_override_font_sizes/bold_italics_font_size = 20
-theme_override_font_sizes/italics_font_size = 20
-theme_override_font_sizes/mono_font_size = 20
-text = "Pass"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1265108636]
 stream = ExtResource("10_1x2ml")
 volume_db = -10.0
 autoplay = true
 
-[connection signal="pressed" from="Buttons/Roll/MarginContainer/LinkButton" to="." method="_on_roll"]
-[connection signal="pressed" from="Buttons/Pass/MarginContainer/LinkButton" to="." method="_on_pass"]
+[node name="Buttons" type="MarginContainer" parent="." unique_id=1174053323]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -40.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 16
 
-[editable path="Buttons/Roll"]
-[editable path="Buttons/Pass"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Buttons" unique_id=1494982423]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="RollButton" type="Button" parent="Buttons/HBoxContainer" unique_id=252325315]
+custom_minimum_size = Vector2(200, 42)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("8_b3gjf")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_6qftt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_io52l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b3gjf")
+text = "Roll"
+
+[node name="Divider" type="ColorRect" parent="Buttons/HBoxContainer" unique_id=1260635778]
+custom_minimum_size = Vector2(5, 50)
+layout_mode = 2
+color = Color(0.21960784, 0.7411765, 0.972549, 1)
+
+[node name="PassButton" type="Button" parent="Buttons/HBoxContainer" unique_id=1291110717]
+custom_minimum_size = Vector2(200, 42)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("8_b3gjf")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_1x2ml")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_71hio")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i6ynk")
+text = "Pass"
+
+[node name="Scores" type="MarginContainer" parent="." unique_id=1739876770]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scores" unique_id=849662819]
+layout_mode = 2
+
+[node name="TargetScore" type="Label" parent="Scores/VBoxContainer" unique_id=1810036684]
+layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("8_b3gjf")
+theme_override_font_sizes/font_size = 24
+text = "Target: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Scores/VBoxContainer" unique_id=1852205469]
+layout_mode = 2
+theme_override_constants/separation = -37
+
+[node name="Player1ScoreHolder" type="PanelContainer" parent="Scores/VBoxContainer/HBoxContainer" unique_id=178095979]
+custom_minimum_size = Vector2(200, 44)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_1bhw7")
+
+[node name="Score" type="Label" parent="Scores/VBoxContainer/HBoxContainer/Player1ScoreHolder" unique_id=2027544112]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.36078432, 0.46666667, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("8_b3gjf")
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TurnScoreHolder" type="PanelContainer" parent="Scores/VBoxContainer/HBoxContainer" unique_id=1298792522]
+z_index = 1
+custom_minimum_size = Vector2(74, 74)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7dt53")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scores/VBoxContainer/HBoxContainer/TurnScoreHolder" unique_id=1851335877]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="CurrentScore" type="Label" parent="Scores/VBoxContainer/HBoxContainer/TurnScoreHolder/VBoxContainer" unique_id=1006190622]
+layout_mode = 2
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("8_b3gjf")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="Scores/VBoxContainer/HBoxContainer/TurnScoreHolder/VBoxContainer" unique_id=1628613518]
+custom_minimum_size = Vector2(60, 1)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.21960784, 0.7411765, 0.972549, 1)
+
+[node name="BankedScore" type="Label" parent="Scores/VBoxContainer/HBoxContainer/TurnScoreHolder/VBoxContainer" unique_id=1781061144]
+layout_mode = 2
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("8_b3gjf")
+text = "0"
+horizontal_alignment = 1
+
+[node name="Player1ScoreHolder2" type="PanelContainer" parent="Scores/VBoxContainer/HBoxContainer" unique_id=1021982283]
+custom_minimum_size = Vector2(200, 44)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_1bhw7")
+
+[node name="Score" type="Label" parent="Scores/VBoxContainer/HBoxContainer/Player1ScoreHolder2" unique_id=1295843301]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8980392, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("8_b3gjf")
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TurnLabel" type="Label" parent="Scores/VBoxContainer" unique_id=124279003]
+layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("8_b3gjf")
+theme_override_font_sizes/font_size = 24
+text = "Player 1's Turn"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverPopup" type="MarginContainer" parent="." unique_id=763431111]
+visible = false
+custom_maximum_size = Vector2(1170, -1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -263.0
+offset_right = 173.0
+offset_bottom = 263.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="Popup" type="VBoxContainer" parent="GameOverPopup" unique_id=993577719]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Heading" type="PanelContainer" parent="GameOverPopup/Popup" unique_id=2079690443]
+custom_minimum_size = Vector2(0, 71)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wr6kv")
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOverPopup/Popup/Heading" unique_id=1604242014]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Label" type="Label" parent="GameOverPopup/Popup/Heading/MarginContainer" unique_id=2039135433]
+layout_mode = 2
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("8_b3gjf")
+theme_override_font_sizes/font_size = 32
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="Body" type="PanelContainer" parent="GameOverPopup/Popup" unique_id=1456095346]
+custom_minimum_size = Vector2(0, 71)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6xmkl")
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOverPopup/Popup/Body" unique_id=1612178399]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPopup/Popup/Body/MarginContainer" unique_id=1936049041]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="GameOverPopup/Popup/Body/MarginContainer/VBoxContainer" unique_id=38057587]
+layout_mode = 2
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("8_b3gjf")
+theme_override_font_sizes/font_size = 32
+text = "Player 1 Wins"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverPopup/Popup/Body/MarginContainer/VBoxContainer" unique_id=699917054]
+layout_mode = 2
+
+[node name="MainMenuButton6" parent="GameOverPopup/Popup/Body/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1023268900 instance=ExtResource("8_io52l")]
+custom_minimum_size = Vector2(150, 48)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i6au4")
+
+[node name="AnimatedLabel" parent="GameOverPopup/Popup/Body/MarginContainer/VBoxContainer/HBoxContainer/MainMenuButton6/MarginContainer" parent_id_path=PackedInt32Array(1023268900, 453075192) index="0" unique_id=1132354834]
+text = "Restart"
+
+[node name="MainMenuButton7" parent="GameOverPopup/Popup/Body/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1362845690 instance=ExtResource("8_io52l")]
+custom_minimum_size = Vector2(150, 48)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i6au4")
+
+[node name="AnimatedLabel" parent="GameOverPopup/Popup/Body/MarginContainer/VBoxContainer/HBoxContainer/MainMenuButton7/MarginContainer" parent_id_path=PackedInt32Array(1362845690, 453075192) index="0" unique_id=1132354834]
+text = "Main Menu"
+
+[node name="PauseMenuPanel" type="Panel" parent="." unique_id=74092381]
+process_mode = 3
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenu" type="MarginContainer" parent="PauseMenuPanel" unique_id=144825652]
+custom_maximum_size = Vector2(1170, -1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -222.0
+offset_top = -263.0
+offset_right = 222.0
+offset_bottom = 263.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="Popup" type="VBoxContainer" parent="PauseMenuPanel/PauseMenu" unique_id=99779926]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Heading" type="PanelContainer" parent="PauseMenuPanel/PauseMenu/Popup" unique_id=464537227]
+custom_minimum_size = Vector2(0, 71)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wr6kv")
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenuPanel/PauseMenu/Popup/Heading" unique_id=1180475603]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Label" type="Label" parent="PauseMenuPanel/PauseMenu/Popup/Heading/MarginContainer" unique_id=329178877]
+layout_mode = 2
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("8_b3gjf")
+theme_override_font_sizes/font_size = 32
+text = "Game Paused"
+horizontal_alignment = 1
+
+[node name="Body" type="PanelContainer" parent="PauseMenuPanel/PauseMenu/Popup" unique_id=77732646]
+custom_minimum_size = Vector2(0, 71)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6xmkl")
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenuPanel/PauseMenu/Popup/Body" unique_id=168917806]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuPanel/PauseMenu/Popup/Body/MarginContainer" unique_id=855268285]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+
+[node name="MainMenuButton6" parent="PauseMenuPanel/PauseMenu/Popup/Body/MarginContainer/VBoxContainer" unique_id=1108310541 instance=ExtResource("8_io52l")]
+custom_minimum_size = Vector2(150, 48)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i6au4")
+
+[node name="AnimatedLabel" parent="PauseMenuPanel/PauseMenu/Popup/Body/MarginContainer/VBoxContainer/MainMenuButton6/MarginContainer" parent_id_path=PackedInt32Array(1108310541, 453075192) index="0" unique_id=1132354834]
+text = "Resume"
+
+[node name="MainMenuButton8" parent="PauseMenuPanel/PauseMenu/Popup/Body/MarginContainer/VBoxContainer" unique_id=605457775 instance=ExtResource("8_io52l")]
+custom_minimum_size = Vector2(150, 48)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i6au4")
+
+[node name="AnimatedLabel" parent="PauseMenuPanel/PauseMenu/Popup/Body/MarginContainer/VBoxContainer/MainMenuButton8/MarginContainer" parent_id_path=PackedInt32Array(605457775, 453075192) index="0" unique_id=1132354834]
+text = "Restart"
+
+[node name="MainMenuButton7" parent="PauseMenuPanel/PauseMenu/Popup/Body/MarginContainer/VBoxContainer" unique_id=219102750 instance=ExtResource("8_io52l")]
+custom_minimum_size = Vector2(150, 48)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i6au4")
+
+[node name="AnimatedLabel" parent="PauseMenuPanel/PauseMenu/Popup/Body/MarginContainer/VBoxContainer/MainMenuButton7/MarginContainer" parent_id_path=PackedInt32Array(219102750, 453075192) index="0" unique_id=1132354834]
+text = "Main Menu"
+
+[node name="MainMenuButton9" parent="PauseMenuPanel/PauseMenu/Popup/Body/MarginContainer/VBoxContainer" unique_id=535202009 instance=ExtResource("8_io52l")]
+custom_minimum_size = Vector2(150, 48)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sxc2a")
+
+[node name="AnimatedLabel" parent="PauseMenuPanel/PauseMenu/Popup/Body/MarginContainer/VBoxContainer/MainMenuButton9/MarginContainer" parent_id_path=PackedInt32Array(535202009, 453075192) index="0" unique_id=1132354834]
+text = "Exit"
+
+[node name="PauseButton" type="MarginContainer" parent="." unique_id=1547241223]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+
+[node name="Button" type="Button" parent="PauseButton" unique_id=1258891782]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_7dt53")
+text = "||"
+
+[connection signal="pressed" from="Buttons/HBoxContainer/RollButton" to="." method="_on_roll"]
+[connection signal="pressed" from="Buttons/HBoxContainer/PassButton" to="." method="_on_pass"]
+[connection signal="pressed" from="GameOverPopup/Popup/Body/MarginContainer/VBoxContainer/HBoxContainer/MainMenuButton6/MarginContainer/LinkButton" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="GameOverPopup/Popup/Body/MarginContainer/VBoxContainer/HBoxContainer/MainMenuButton7/MarginContainer/LinkButton" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="PauseMenuPanel/PauseMenu/Popup/Body/MarginContainer/VBoxContainer/MainMenuButton6/MarginContainer/LinkButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenuPanel/PauseMenu/Popup/Body/MarginContainer/VBoxContainer/MainMenuButton8/MarginContainer/LinkButton" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseMenuPanel/PauseMenu/Popup/Body/MarginContainer/VBoxContainer/MainMenuButton7/MarginContainer/LinkButton" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="PauseMenuPanel/PauseMenu/Popup/Body/MarginContainer/VBoxContainer/MainMenuButton9/MarginContainer/LinkButton" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="PauseButton/Button" to="." method="_on_pause_pressed"]
+
+[editable path="GameOverPopup/Popup/Body/MarginContainer/VBoxContainer/HBoxContainer/MainMenuButton6"]
+[editable path="GameOverPopup/Popup/Body/MarginContainer/VBoxContainer/HBoxContainer/MainMenuButton7"]
+[editable path="PauseMenuPanel/PauseMenu/Popup/Body/MarginContainer/VBoxContainer/MainMenuButton6"]
+[editable path="PauseMenuPanel/PauseMenu/Popup/Body/MarginContainer/VBoxContainer/MainMenuButton8"]
+[editable path="PauseMenuPanel/PauseMenu/Popup/Body/MarginContainer/VBoxContainer/MainMenuButton7"]
+[editable path="PauseMenuPanel/PauseMenu/Popup/Body/MarginContainer/VBoxContainer/MainMenuButton9"]

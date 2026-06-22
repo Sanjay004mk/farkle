@@ -51,10 +51,12 @@ corner_radius_top_right = 45
 corner_radius_bottom_right = 45
 corner_radius_bottom_left = 45
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wr6kv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ay3dt"]
 bg_color = Color(0.13333334, 0.10980392, 0.2509804, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6au4"]
 bg_color = Color(0.36862746, 0.2627451, 1, 1)
@@ -67,6 +69,11 @@ corner_radius_top_left = 24
 corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wr6kv"]
+bg_color = Color(0.13333334, 0.10980392, 0.2509804, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6xmkl"]
 bg_color = Color(0.08627451, 0.07058824, 0.1764706, 1)
@@ -245,25 +252,24 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-alignment = 1
 
 [node name="Mode" type="MarginContainer" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu" unique_id=1468228909]
 custom_maximum_size = Vector2(1170, -1)
 layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
+size_flags_vertical = 0
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_right = 16
 
 [node name="DifficultyOptions" type="VBoxContainer" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode" unique_id=653594820]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/separation = 0
 alignment = 1
 
 [node name="Heading" type="PanelContainer" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions" unique_id=2027635033]
 custom_minimum_size = Vector2(0, 71)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wr6kv")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ay3dt")
 
 [node name="MarginContainer" type="MarginContainer" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading" unique_id=2092053601]
 layout_mode = 2
@@ -274,22 +280,57 @@ theme_override_constants/margin_bottom = 24
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer" unique_id=1219337216]
 layout_mode = 2
+alignment = 1
 
 [node name="MainMenuButton" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer/HBoxContainer" unique_id=1335363348 instance=ExtResource("5_7k2rn")]
+clip_children = 2
 custom_minimum_size = Vector2(200, 48)
+clip_contents = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_i6au4")
 
 [node name="AnimatedLabel" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer/HBoxContainer/MainMenuButton/MarginContainer" parent_id_path=PackedInt32Array(1335363348, 453075192) index="0" unique_id=1132354834]
 text = "PLAYER"
 
+[node name="DisablePanel" type="Panel" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer/HBoxContainer/MainMenuButton/MarginContainer/LinkButton" parent_id_path=PackedInt32Array(1335363348, 722969515) index="0" unique_id=1361200417]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -14.0
+offset_right = 31.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
 [node name="MainMenuButton2" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer/HBoxContainer" unique_id=1842369298 instance=ExtResource("5_7k2rn")]
+clip_children = 2
 custom_minimum_size = Vector2(200, 48)
+clip_contents = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_i6au4")
 
 [node name="AnimatedLabel" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer/HBoxContainer/MainMenuButton2/MarginContainer" parent_id_path=PackedInt32Array(1842369298, 453075192) index="0" unique_id=1132354834]
 text = "COMPUTER"
+
+[node name="DisablePanel" type="Panel" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer/HBoxContainer/MainMenuButton2/MarginContainer/LinkButton" parent_id_path=PackedInt32Array(1842369298, 722969515) index="0" unique_id=1479945017]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.5
+offset_top = -32.0
+offset_right = 109.5
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 
 [node name="DifficultyOptions" type="MarginContainer" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu" unique_id=123360958]
 custom_maximum_size = Vector2(1170, -1)
@@ -302,7 +343,6 @@ theme_override_constants/margin_right = 16
 [node name="DifficultyOptions" type="VBoxContainer" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions" unique_id=967907329]
 layout_mode = 2
 theme_override_constants/separation = 0
-alignment = 1
 
 [node name="Heading" type="PanelContainer" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions" unique_id=1016328759]
 custom_minimum_size = Vector2(0, 71)
@@ -336,57 +376,64 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer" unique_id=371537149]
+[node name="HBoxContainer" type="HBoxContainer" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer" unique_id=1970951886]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer" unique_id=371537149]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 16
 
-[node name="MainMenuButton" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer" unique_id=1869764160 instance=ExtResource("5_7k2rn")]
+[node name="MainMenuButton" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1869764160 instance=ExtResource("5_7k2rn")]
 custom_minimum_size = Vector2(250, 48)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_i6au4")
 
-[node name="AnimatedLabel" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton/MarginContainer" parent_id_path=PackedInt32Array(1869764160, 453075192) index="0" unique_id=1132354834]
+[node name="AnimatedLabel" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer/MainMenuButton/MarginContainer" parent_id_path=PackedInt32Array(1869764160, 453075192) index="0" unique_id=1132354834]
 text = "1500"
 
-[node name="MainMenuButton2" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer" unique_id=501368475 instance=ExtResource("5_7k2rn")]
+[node name="MainMenuButton2" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer" unique_id=501368475 instance=ExtResource("5_7k2rn")]
 custom_minimum_size = Vector2(250, 48)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_i6au4")
 
-[node name="AnimatedLabel" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton2/MarginContainer" parent_id_path=PackedInt32Array(501368475, 453075192) index="0" unique_id=1132354834]
+[node name="AnimatedLabel" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer/MainMenuButton2/MarginContainer" parent_id_path=PackedInt32Array(501368475, 453075192) index="0" unique_id=1132354834]
 text = "2000"
 
-[node name="MainMenuButton3" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer" unique_id=434363894 instance=ExtResource("5_7k2rn")]
+[node name="MainMenuButton3" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer" unique_id=434363894 instance=ExtResource("5_7k2rn")]
 custom_minimum_size = Vector2(250, 48)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_i6au4")
 
-[node name="AnimatedLabel" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton3/MarginContainer" parent_id_path=PackedInt32Array(434363894, 453075192) index="0" unique_id=1132354834]
+[node name="AnimatedLabel" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer/MainMenuButton3/MarginContainer" parent_id_path=PackedInt32Array(434363894, 453075192) index="0" unique_id=1132354834]
 text = "4000"
 
-[node name="MainMenuButton4" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer" unique_id=1410731778 instance=ExtResource("5_7k2rn")]
+[node name="VBoxContainer2" type="VBoxContainer" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer" unique_id=1380633202]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MainMenuButton4" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1410731778 instance=ExtResource("5_7k2rn")]
 custom_minimum_size = Vector2(250, 48)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_i6au4")
 
-[node name="AnimatedLabel" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton4/MarginContainer" parent_id_path=PackedInt32Array(1410731778, 453075192) index="0" unique_id=1132354834]
+[node name="AnimatedLabel" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer2/MainMenuButton4/MarginContainer" parent_id_path=PackedInt32Array(1410731778, 453075192) index="0" unique_id=1132354834]
 text = "5000"
 
-[node name="MainMenuButton5" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer" unique_id=1281499456 instance=ExtResource("5_7k2rn")]
+[node name="MainMenuButton5" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1281499456 instance=ExtResource("5_7k2rn")]
 custom_minimum_size = Vector2(250, 48)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_i6au4")
 
-[node name="AnimatedLabel" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton5/MarginContainer" parent_id_path=PackedInt32Array(1281499456, 453075192) index="0" unique_id=1132354834]
+[node name="AnimatedLabel" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer2/MainMenuButton5/MarginContainer" parent_id_path=PackedInt32Array(1281499456, 453075192) index="0" unique_id=1132354834]
 text = "6000"
 
-[node name="MainMenuButton6" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer" unique_id=1147202226 instance=ExtResource("5_7k2rn")]
+[node name="MainMenuButton6" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1147202226 instance=ExtResource("5_7k2rn")]
 custom_minimum_size = Vector2(250, 48)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_i6au4")
 
-[node name="AnimatedLabel" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton6/MarginContainer" parent_id_path=PackedInt32Array(1147202226, 453075192) index="0" unique_id=1132354834]
+[node name="AnimatedLabel" parent="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer2/MainMenuButton6/MarginContainer" parent_id_path=PackedInt32Array(1147202226, 453075192) index="0" unique_id=1132354834]
 text = "8000"
 
 [node name="RulesMenu" type="MarginContainer" parent="TitleAndMenu/TitleAndMainMenu" unique_id=40098986]
@@ -457,7 +504,7 @@ theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("7_6xmkl")
 theme_override_font_sizes/font_size = 28
 text = "- Must score points based on the score sheet
-- If no points can be scored you ‘farkle’ and lose all points for that turn
+- If no points can be scored you lose all points accumulated in that turn
 - 4, 5, 6 of a kind multiply the score by 2, 3, 4 respectively
 - After scoring, you pass to opponent or roll the remaining dice again
 - Scoring all 6 dice means you can roll them again"
@@ -852,9 +899,9 @@ parameters/looping = true
 [editable path="TitleAndMenu/TitleAndMainMenu/MainMenu/Exit"]
 [editable path="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer/HBoxContainer/MainMenuButton"]
 [editable path="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/Mode/DifficultyOptions/Heading/MarginContainer/HBoxContainer/MainMenuButton2"]
-[editable path="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton"]
-[editable path="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton2"]
-[editable path="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton3"]
-[editable path="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton4"]
-[editable path="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton5"]
-[editable path="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/VBoxContainer/MainMenuButton6"]
+[editable path="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer/MainMenuButton"]
+[editable path="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer/MainMenuButton2"]
+[editable path="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer/MainMenuButton3"]
+[editable path="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer2/MainMenuButton4"]
+[editable path="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer2/MainMenuButton5"]
+[editable path="TitleAndMenu/TitleAndMainMenu/DifficultyMenu/DifficultyOptions/DifficultyOptions/Body/MarginContainer/HBoxContainer/VBoxContainer2/MainMenuButton6"]
