@@ -9,10 +9,10 @@
 [ext_resource type="FontFile" uid="uid://bly3xf8f43rdd" path="res://font/LilitaOne-Regular.ttf" id="7_6xmkl"]
 [ext_resource type="Texture2D" uid="uid://b4iiprqmdhuf7" path="res://dice/model/die_face_1.png" id="8_7mn57"]
 [ext_resource type="Texture2D" uid="uid://bwxphoeyl7503" path="res://dice/model/die_face_5.png" id="9_6vmua"]
-[ext_resource type="AudioStream" uid="uid://bf3ih4l01sf3q" path="res://sounds/bgm2.mp3" id="9_7mn57"]
 [ext_resource type="Texture2D" uid="uid://bggxftk8l2bcs" path="res://dice/model/die_face_2.png" id="10_rv8kf"]
 [ext_resource type="Texture2D" uid="uid://b1evx6t5osf8e" path="res://dice/model/die_face_4.png" id="11_5i8qu"]
 [ext_resource type="Texture2D" uid="uid://b6pqst2i2tw7r" path="res://dice/model/die_face_6.png" id="12_i6au4"]
+[ext_resource type="AudioStream" uid="uid://dey14ss5l88ll" path="res://sounds/bgm4.mp3" id="13_i6au4"]
 
 [sub_resource type="Gradient" id="Gradient_7mn57"]
 offsets = PackedFloat32Array(0.49253732, 1)
@@ -885,7 +885,7 @@ theme_override_font_sizes/font_size = 22
 text = "1200"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2082331639]
-stream = ExtResource("9_7mn57")
+stream = ExtResource("13_i6au4")
 volume_db = -10.0
 autoplay = true
 parameters/looping = true

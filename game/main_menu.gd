@@ -56,7 +56,7 @@ func _update_mode_visual_state():
 
 func _start_level(p_difficulty: int):
 	FarkleGameState.target_score = p_difficulty
-	get_tree().change_scene_to_file("res://game/game.tscn")
+	Loader.load_scene("res://game/game.tscn")
 
 func _show_menu(p_menu: String):
 	for menu_name in menus:

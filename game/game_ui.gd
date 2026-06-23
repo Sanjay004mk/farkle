@@ -59,11 +59,11 @@ func _on_resume_pressed():
 
 func _on_restart_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://game/game.tscn")
+	Loader.load_scene("res://game/game.tscn")
 
 func _on_main_menu_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://game/main_menu.tscn")
+	Loader.load_scene("res://game/main_menu.tscn")
 
 func _on_exit_pressed():
 	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)

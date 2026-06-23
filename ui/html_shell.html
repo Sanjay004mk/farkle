@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/png" href="icon.144x144.png" />
+		<title>Farkle</title>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				background-color: #1a1a1a; /* Your background color */
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				color: white;
+				font-family: sans-serif;
+				overflow: hidden;
+			}
+
+			/* The canvas where the game renders */
+			#canvas {
+				display: block;
+				margin: 0;
+				width: 100vw;
+				height: 100vh;
+			}
+
+			/* The custom loading screen overlay */
+			#loading-screen {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				background-color: #1a1a1a;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				z-index: 10;
+			}
+
+			/* The progress bar container */
+			#progress-container {
+				width: 300px;
+				height: 20px;
+				background-color: #333;
+				border-radius: 10px;
+				overflow: hidden;
+				margin-top: 20px;
+			}
+
+			/* The actual loading bar that fills up */
+			#progress-bar {
+				width: 0%;
+				height: 100%;
+				background-color: #4caf50; /* Green loading bar */
+				transition: width 0.1s;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>
+
+		<div id="loading-screen">
+			<h2 id="loading-text">Downloading Game Assets...</h2>
+			<div id="progress-container">
+				<div id="progress-bar"></div>
+			</div>
+		</div>
+
+		<script src="$GODOT_URL"></script>
+
+		<script>
+			const engine = new Engine($GODOT_CONFIG);
+
+			const loadingScreen = document.getElementById("loading-screen");
+			const progressBar = document.getElementById("progress-bar");
+			const loadingText = document.getElementById("loading-text");
+
+			// Start the engine and track progress
+			engine
+				.startGame({
+					canvas: document.getElementById("canvas"),
+					onProgress: function (current, total) {
+						if (total > 0) {
+							// Calculate percentage
+							const percent = (current / total) * 100;
+
+							// Update the CSS progress bar width
+							progressBar.style.width = percent + "%";
+
+							// Optional: Update text
+							loadingText.innerText = `Downloading... ${Math.round(percent)}%`;
+						}
+					},
+				})
+				.then(() => {
+					// Once the engine starts, hide the HTML loading screen!
+					// At this point, your Godot 'Main Scene' takes over.
+					loadingScreen.style.display = "none";
+				});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://c41hcuq0s8dqw"]
+
+[ext_resource type="Script" uid="uid://by7a7akgdvw2o" path="res://game/loading_screen.gd" id="1_ufo2r"]
+[ext_resource type="Material" uid="uid://dps6bi60poop1" path="res://shaders/ui_background_material.tres" id="2_rgdlk"]
+[ext_resource type="Material" uid="uid://b3h6hxycksc6q" path="res://shaders/ui_blur_background.tres" id="3_5nqu4"]
+[ext_resource type="FontFile" uid="uid://jskohweoem0q" path="res://font/Nougat-ExtraBlack.ttf" id="4_mnh5i"]
+[ext_resource type="Texture2D" uid="uid://bg5t4xquc2r0p" path="res://dice/model/die_face_3.png" id="5_jk33c"]
+[ext_resource type="FontFile" uid="uid://bly3xf8f43rdd" path="res://font/LilitaOne-Regular.ttf" id="6_rgdlk"]
+
+[sub_resource type="Gradient" id="Gradient_p8g5q"]
+offsets = PackedFloat32Array(0.49253732, 1)
+colors = PackedColorArray(0.043137256, 0.03137255, 0.101960786, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_24x8f"]
+gradient = SubResource("Gradient_p8g5q")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kwwrr"]
+texture = SubResource("GradientTexture2D_24x8f")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4sdr"]
+bg_color = Color(0.38431373, 0.007843138, 0.20784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgdlk"]
+bg_color = Color(0.36862746, 0.2627451, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="LoadingScreen" type="Control" unique_id=65601431]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ufo2r")
+
+[node name="Background" type="Panel" parent="." unique_id=425218852]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_kwwrr")
+
+[node name="Background2" type="Panel" parent="." unique_id=1644551082]
+material = ExtResource("2_rgdlk")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_kwwrr")
+
+[node name="Background3" type="Panel" parent="." unique_id=1711167037]
+material = ExtResource("3_5nqu4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_kwwrr")
+
+[node name="TitleAndLoader" type="HBoxContainer" parent="." unique_id=179462260]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TitleAndMainMenu" type="VBoxContainer" parent="TitleAndLoader" unique_id=358588540]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="TitleAndLoader/TitleAndMainMenu" unique_id=209870971]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.972549, 0.96862745, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.8509804, 0.27450982, 0.9372549, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("4_mnh5i")
+theme_override_font_sizes/font_size = 96
+text = "FARKLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TitleAndLoader/TitleAndMainMenu/Title" unique_id=1250569056]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -24.0
+offset_right = -8.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_jk33c")
+expand_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="TitleAndLoader/TitleAndMainMenu" unique_id=1302283296]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_i4sdr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rgdlk")
+max_value = 1.0
+value = 0.57
+show_percentage = false
+
+[node name="Progress" type="Label" parent="TitleAndLoader/TitleAndMainMenu" unique_id=1776632452]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.8509804, 0.27450982, 0.9372549, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("6_rgdlk")
+theme_override_font_sizes/font_size = 32
+text = "100%"
+horizontal_alignment = 1

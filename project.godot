@@ -10,14 +10,18 @@ config_version=5
 
 [application]
 
-config/name="farkle"
-run/main_scene="uid://vw0fcjoowx35"
+config/name="Farkle"
+run/main_scene="uid://c41hcuq0s8dqw"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.043137256, 0.03137255, 0.101960786, 1)
+boot_splash/stretch_mode=2
+boot_splash/image="uid://dd7esxtmdenk1"
+config/icon="uid://dweg00rnrv0fl"
 
 [autoload]
 
 FarkleGameState="*uid://bebefib0raape"
+Loader="*uid://ci7o2n087pvgd"
 
 [display]
 
