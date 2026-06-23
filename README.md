@@ -6,11 +6,11 @@ Farkle is a 3D Godot implementation of the classic push-your-luck dice game. The
 
 ### Main menu
 
-![Main menu screenshot](../doc/img/main-menu.png)
+![Main menu screenshot](doc/img/main-menu.png?raw=true)
 
 ### In game
 
-![In-game screenshot](../doc/img/in-game.png)
+![In-game screenshot](doc/img/in-game.png?raw=true)
 
 ## Features
 
